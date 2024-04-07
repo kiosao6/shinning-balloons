@@ -22,6 +22,7 @@ export const SectionOne = () => {
             width={500}
             height={500}
             className="w-full aspect-[4/5] rounded-3xl"
+            priority={true}
           />
         </div>
       </section>
