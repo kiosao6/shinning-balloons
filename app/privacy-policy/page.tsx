@@ -2,11 +2,9 @@
 export default function PrivacyPolicyPage() {
   return (
     <main className="px-8 mx-auto max-w-6xl text-base-heading">
-      <section className="mt-16 max-w-3xl mx-auto">
+      <section className="my-36 mb-16 max-w-3xl mx-auto">
         <p className="text-base mb-2 text-moon-500 font-semibold mx-auto md:text-center md:text-lg">About the</p>
         <h1 className="text-4xl mb-6 font-bold tracking-tight md:text-center lg:text-5xl">Privacy Policy</h1>
-      </section>
-
       <div className="flex mb-16 flex-col max-w-3xl gap-y-3 text-base text-base-heading/70 leading-relaxed mx-auto md:text-lg">
         <p>Last updated: April 04, 2024</p>
         <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
@@ -187,6 +185,8 @@ export default function PrivacyPolicyPage() {
           <li>By visiting this page on our website: <a href="shinningballoons/contact" rel="external nofollow noopener" target="_blank">shinningballoons/contact</a></li>
         </ul>
       </div>
+      </section>
+
 
 
     </main>

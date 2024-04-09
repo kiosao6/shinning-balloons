@@ -10,7 +10,7 @@ export default function FAQPage() {
 
   return (
     <main className="px-8 mx-auto max-w-6xl text-base-heading">
-      <section className="my-16 max-w-3xl mx-auto">
+      <section className="my-36 mb-16 max-w-3xl mx-auto">
         <p className="text-base mb-2 text-moon-500 font-semibold mx-auto md:text-center md:text-lg">FAQ</p>
         <h1 className="text-4xl mb-6 font-bold tracking-tight md:text-center lg:text-5xl">Frequently asked questions</h1>
         <p className="text-base text-base-heading/70 leading-relaxed mx-auto md:text-center md:text-lg">Our FAQ section aims to quickly address common queries, providing concise answers to enhance your experience.</p>

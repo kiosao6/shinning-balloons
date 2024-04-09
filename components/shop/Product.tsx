@@ -26,7 +26,7 @@ export const Product = ({
 
   return (
     <div className="">
-      <Link href={`product/${slug}`} className="w-fit mx-auto z-10 rounded-xl relative flex flex-col items-center justify-center group transition-all duration-300 lg:hover:scale-[1.02]">
+      <Link href={`/product/${slug}`} className="w-fit mx-auto z-10 rounded-xl relative flex flex-col items-center justify-center group transition-all duration-300 lg:hover:scale-[1.02]">
         <Image
           src={image}
           width={400}
@@ -36,9 +36,9 @@ export const Product = ({
         />
       {discountedPrice && <SaleBadge />}
       <div className="mx-auto flex flex-col justify-center items-center">
-        <h3 className="text-base-heading/70 font-medium text-base lg:text-lg pt-2 group-hover:underline">
+        <h5 className="text-base-heading/70 font-medium text-base lg:text-lg pt-2 group-hover:underline">
           {title}
-        </h3>
+        </h5>
         <span>
           <span className="text-sm lg:text-base font-medium text-base-heading/70">{currencyFormat(discountedPrice || price)}</span>
           {discountedPrice && (
