@@ -1,14 +1,18 @@
 
 'use client'
 
-import { useState } from 'react'
 import styles from "./MenuButton.module.css"
 import { MobileMenu } from './MobileMenu'
+import { useStore } from '@/store/ui-store'
 
 export const MenuButton = () => {
-  const [showMenu, setShowMenu] = useState(false)
+  // Global state management
+  const isMenuOpen = useStore(state => state.isMenuOpen);
+  const toggleMenu = useStore(state => state.toggleMenu);
+
+
   const onClick = () => {
-    setShowMenu(!showMenu);
+    toggleMenu();
     document.body.classList.toggle('overflow-hidden');
   }
 
@@ -19,11 +23,11 @@ export const MenuButton = () => {
         onClick={() => onClick()}
         className={`${styles.burger} relative w-8 h-8 flex items-center justify-center md:hidden z-30`}
       >
-        <MenuIcon data-hide={showMenu} />
-        <CrossIcon data-hide={!showMenu} />
+        <MenuIcon data-hide={isMenuOpen} />
+        <CrossIcon data-hide={!isMenuOpen} />
       </button>
       {
-        showMenu && <MobileMenu />
+        isMenuOpen && <MobileMenu />
       }
 
     </>

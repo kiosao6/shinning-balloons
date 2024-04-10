@@ -1,0 +1,26 @@
+
+
+
+.link{
+  animation-fill-mode: both;
+  animation-duration: 200ms;
+  animation-iteration-count: 1;
+  animation-name: reveal;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+
+@keyframes reveal{
+  0%{
+      transform: translate3d(0px, 20px, 0px);
+      opacity: 0;
+  }
+
+  100%{
+      transform: translate3d(0px, 0px, 0px);
+      opacity: 1;
+      transform: none;
+  }
+}
