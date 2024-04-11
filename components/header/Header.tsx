@@ -5,7 +5,7 @@ import Link from "next/link"
 
 export const Header = () => {
   return (
-    <header className="py-4 lg:py-4 bg-white border-b px-8 text-base-heading z-30 fixed top-0 right-0 left-0" >
+    <header className="py-4 lg:py-4 bg-white border-b px-8 text-base-heading z-50 fixed top-0 right-0 left-0" >
       <div className="flex w-full items-center justify-between gap-x-3 max-w-7xl mx-auto">
         <MenuButton />
         <Link href="/" className="flex items-center justify-center gap-x-4 z-30">
