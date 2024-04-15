@@ -24,7 +24,7 @@ export const AddToCart = () => {
       <div className="border w-fit h-12 flex rounded-[0.5rem] py-2 items-center">
         <button
           onClick={() => onQuantityChange(-1)}
-          className="mx-2 p-1 hover:bg-[#F5F5F5] rounded transition-all">
+          className="mx-2 p-1 hover:bg-zinc-100 rounded transition-all">
           <TbMinus size={17} />
         </button>
 
@@ -32,7 +32,7 @@ export const AddToCart = () => {
 
         <button
           onClick={() => onQuantityChange(1)}
-          className="mx-2 p-1 hover:bg-[#F5F5F5] rounded transition-all">
+          className="mx-2 p-1 hover:bg-zinc-100 rounded transition-all">
           <TbPlus size={17} />
         </button>
       </div>

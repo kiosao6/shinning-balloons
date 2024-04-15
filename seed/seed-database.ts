@@ -7,10 +7,12 @@ async function main() {
   await prisma.category.deleteMany();
 
   const { categories, products } = initialData;
+  console.log(products.length);
 
 
   const categoriesData = categories.map(category => ({
-    name: category
+    name: category,
+    slug: category.toLowerCase()
   }))
 
   await prisma.category.createMany({
@@ -25,6 +27,19 @@ async function main() {
   }, {} as Record<string, string>)
 
   console.log(categoriesMap)
+
+  products.forEach(async (product) => {
+    const { category, ...rest } = product;
+    const dbProduct = await prisma.product.create({
+      data: {
+        ...rest,
+        categoryId: categoriesMap[category]
+      }
+    })
+  })
+
+
+
 }
 
 

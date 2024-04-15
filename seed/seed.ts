@@ -343,13 +343,13 @@ export const initialData: SeedData = {
     },
 
     {
-      title: "Robbin's Egg Blue Balloon",
-      description: "A Robbin's Egg Blue Balloon lets everyone know which big milestone event you're celebrating! You can combine this balloon with other colors for a custom look at a graduation, birthday, New Year's Eve party, or anniversary.",
-      slug: 'robbins-egg-blue',
+      title: "Robin's Egg Blue Balloon",
+      description: "A Robin's Egg Blue Balloon lets everyone know which big milestone event you're celebrating! You can combine this balloon with other colors for a custom look at a graduation, birthday, New Year's Eve party, or anniversary.",
+      slug: 'robins-egg-blue',
       price: 10,
       category: 'latex',
       material: 'latex',
-      tags: ['blue', 'latex', 'robbins egg blue', 'robbins', 'egg', 'robbins egg', 'robbins blue']
+      tags: ['blue', 'latex', 'robins egg blue', 'robins', 'egg', 'robins egg', 'robins blue']
     },
 
     {
@@ -365,7 +365,7 @@ export const initialData: SeedData = {
     {
       title: 'Rose Gold Latex Balloon',
       description: "A Rose Balloon lets everyone know which big milestone event you're celebrating! You can combine this balloon with other colors for a custom look at a graduation, birthday, New Year's Eve party, or anniversary.",
-      slug: 'rose.gold',
+      slug: 'rose-gold',
       price: 10,
       category: 'latex',
       material: 'latex',
@@ -396,7 +396,7 @@ export const initialData: SeedData = {
     {
       title: 'Tropical Teal Blue Latex Balloon',
       description: "A Tropical Teal Blue Balloon lets everyone know which big milestone event you're celebrating! You can combine this balloon with other colors for a custom look at a graduation, birthday, New Year's Eve party, or anniversary.",
-      slug: 'rose',
+      slug: 'tropical-teal-blue',
       price: 10,
       category: 'latex',
       material: 'latex',

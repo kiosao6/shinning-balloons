@@ -31,11 +31,14 @@ export const MobileMenu = () => {
   const onClick = () => {
     toggleMenu();
     document.body.classList.toggle('overflow-hidden');
+    document.querySelector('main')?.classList.toggle('opacity-0');
+    document.querySelector('footer')?.classList.toggle('opacity-0');
+
   }
 
   return (
-    <div className="fixed bottom-0 right-0 left-0 top-0 mt-[68px] bg-white z-20">
-      <nav className="bg-dark px-8 h-full flex flex-col pt-9 justify-between">
+    <div className="fixed bottom-0 right-0 left-0 top-0 mt-24 bg-white z-20">
+      <nav className="bg-dark px-8 h-full flex flex-col justify-between">
         <div className="flex flex-col gap-1">
 
           {

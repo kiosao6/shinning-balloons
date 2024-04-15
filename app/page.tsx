@@ -6,7 +6,8 @@ export default function Home() {
     <main className="mx-auto text-base-heading lg:px-0">
       <SectionOne />
       <SectionTwo />
-      <SectionThree />
+      {/* <SectionThree /> */}
+
     </main>
   );
 }

@@ -5,13 +5,15 @@ const articles = [
     title: "Creative Ways to Decorate a Room with Balloons",
     description: "Unlock the art of decorating a room with balloons, whether you're aiming to surprise a loved one on their birthday or add flair to your office space. Discover techniques to infuse charm and excitement into any setting, creating unforgettable moments with the magic of balloons.",
     author: "Gabriel Maestre",
-    slug : "creative-ways-to-decorate-a-room-with-balloons"
+    slug : "creative-ways-to-decorate-a-room-with-balloons",
+    image: "/article1.webp"
   },
   {
     title: "The Not-So-Fun Side of Balloons",
     description: "Explore the downside of balloons and their environmental impact. Unveil the realities of balloon usage and discover ways to minimize their ecological footprint.",
     author: "Gabriel Maestre",
-    slug: "the-not-so-fun-side-of-balloons"
+    slug: "the-not-so-fun-side-of-balloons",
+    image: "/seaballoon.webp"
   }
 ]
 

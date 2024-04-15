@@ -14,6 +14,8 @@ export const MenuButton = () => {
   const onClick = () => {
     toggleMenu();
     document.body.classList.toggle('overflow-hidden');
+    document.querySelector('main')?.classList.toggle('opacity-0');
+    document.querySelector('footer')?.classList.toggle('opacity-0');
   }
 
   return (

@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${gabarito.className} antialiased`}>
+      <body className={`${gabarito.className} antialiased !bg-white`}>
         <Header />
         {children}
         <Footer />

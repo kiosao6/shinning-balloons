@@ -1,9 +1,27 @@
 
 
-// import { Button, MiniList } from "@/components/index";
 import Image from "next/image";
 import Link from "next/link";
 
+const categories = [
+
+  {
+    image: "/products/latexBalloons.webp",
+    title: "Latex Balloons",
+    slug: "latex"
+  },
+  {
+    image: "/products/silverPack.webp",
+    title: "Number Balloons",
+    slug: "numbers"
+  },
+  {
+    image: "/products/room.webp",
+    title: "Room Decoration",
+    slug: "decoration"
+  },
+
+]
 
 export const SectionTwo = () => {
   return (
@@ -13,51 +31,28 @@ export const SectionTwo = () => {
         <p className="text-base pb-10 text-base-heading/70 max-w-3xl text-center leading-relaxed mx-auto md:text-lg">Explore our categories for balloon inspiration and variety.</p>
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 lg:px-8">
 
-          <Link href="#" className="w-fit z-10 rounded-xl mx-auto relative bg-black/50 flex flex-col items-center justify-center group transition-all duration-300 lg:hover:scale-[1.02]">
-            <Image
-              src="/products/latexBalloons.webp"
-              width={500}
-              height={500}
-              alt="Silver Number Balloons"
-              className="w-full mix-blend-overlay aspect-[1/1] rounded-xl max-w-sm mx-auto"
-            />
-            <h2
-              className="text-white h-fit text-3xl font-medium absolute text-center group-hover:underline">
-              Latex Balloons
-            </h2>
-          </Link>
-
-          <Link href="#" className="w-fit z-10 rounded-xl mx-auto relative bg-black/50 flex flex-col items-center justify-center group transition-all duration-300 lg:hover:scale-[1.02]">
-            <Image
-              src="/products/silverPack.webp"
-              width={500}
-              height={500}
-              alt="Silver Number Balloons"
-              className="w-full mix-blend-overlay aspect-[1/1] rounded-xl max-w-sm mx-auto"
-            />
-            <h2
-              className="text-white h-fit text-3xl font-medium absolute text-center group-hover:underline">
-              Number Balloons
-            </h2>
-          </Link>
-
-          <Link href="#" className="w-fit z-10 rounded-xl mx-auto relative bg-black/50 flex flex-col items-center justify-center group transition-all duration-300 lg:hover:scale-[1.02]">
-            <Image
-              src="/products/room.webp"
-              width={500}
-              height={500}
-              alt="Silver Number Balloons"
-              className="w-full mix-blend-overlay aspect-[1/1] rounded-xl max-w-sm mx-auto"
-            />
-            <h2
-              className="text-white h-fit text-3xl font-medium absolute text-center group-hover:underline">
-              Room Decoration
-            </h2>
-          </Link>
+          {
+            categories.map((category, index) => (
+              <Link key={index} href={`/shop/${category.slug}`} className="w-fit z-10 rounded-xl mx-auto relative bg-black/50 flex flex-col items-center justify-center group transition-all duration-300 lg:hover:scale-[1.02]">
+                <Image
+                  src={category.image}
+                  width={500}
+                  height={500}
+                  alt={category.title}
+                  className="w-full mix-blend-overlay aspect-[1/1] rounded-xl max-w-sm mx-auto"
+                />
+                <h2
+                  className="text-white h-fit text-3xl font-medium absolute text-center group-hover:underline">
+                  {category.title}
+                </h2>
+              </Link>
+            ))
+          }
+          
         </div>
       </div>
 
-    </section>
+    </section >
 
 
   )

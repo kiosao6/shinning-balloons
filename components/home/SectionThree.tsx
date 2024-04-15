@@ -1,4 +1,4 @@
-import { Button, ProductGrid } from "@/components/index";
+import { Button, ProductGridHome } from "@/components/index";
 import Link from "next/link";
 
 
@@ -10,7 +10,7 @@ export const SectionThree = () => {
         <p className="text-base pb-10 text-base-heading/70 max-w-3xl text-center leading-relaxed mx-auto md:text-lg">Discover the latest trending colors in balloon decor.</p>
       </div>
 
-      <ProductGrid className="px-8" />
+      <ProductGridHome className="px-8" />
       <Button className="bg-moon-500 mt-14 mx-auto block text-base rounded-[0.5rem] text-white hover:bg-moon-600 w-64 p-0" variant="default" size="lg">
         <Link className="w-full h-full flex justify-center items-center" href="/shop">Find more colors</Link>
       </Button>

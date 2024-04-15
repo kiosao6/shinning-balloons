@@ -1,13 +1,17 @@
-import {  ProductGridSkeleton, ShopBreadCrumb, ShopNavigation } from "@/components";
-import ProductShopGrid from "@/components/shop/ProductShopGrid";
+import { ProductGridSkeleton, ShopBreadCrumb, ShopNavigation } from "@/components";
+import ProductCategoryGrid from "@/components/shop/ProductCategoryGrid";
 import { Suspense } from "react";
 
+interface Props {
+  params: {
+    category: string;
+  }
+}
 
+export default async function ShopPage({
+  params
+}: Props) {
 
-export default async function ShopPage() {
-  
-
- 
   return (
     <main>
       <section className="my-24 px-8 max-w-6xl mx-auto text-base-heading">
@@ -18,7 +22,7 @@ export default async function ShopPage() {
 
       <section className="px-8 mb-24 max-w-6xl mx-auto text-base-heading">
         <Suspense fallback={<ProductGridSkeleton />}>
-          <ProductShopGrid  />
+          <ProductCategoryGrid category={params.category}  />
         </Suspense>
       </section>
     </main>

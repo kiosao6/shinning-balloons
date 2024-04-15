@@ -7,8 +7,13 @@ import {
 
 // defaultValue="item-1" collapsible to open the first item by default and make it collapsible. Must be used in the accordion root.
 
-
-export const AccordionProduct = () => {
+interface Props {
+  material: string;
+}
+export const AccordionProduct = ({
+  material
+}: Props) => {
+  
   return (
     <Accordion type="multiple" className="mt-6">
       <AccordionItem value="item-1">
@@ -27,7 +32,7 @@ export const AccordionProduct = () => {
 
           <div className="flex justify-between items-center mb-2">
             <p className="text-base-heading/60">Material</p>
-            <p>Latex</p>
+            <p className="capitalize">{material}</p>
           </div>
 
         </AccordionContent>

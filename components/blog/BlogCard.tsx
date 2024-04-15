@@ -1,8 +1,10 @@
+import Image from "next/image";
 import Link from "next/link"
 
 
 interface Props {
   title: string;
+  image: string;
   description: string;
   author: string;
   slug: string;
@@ -11,6 +13,7 @@ interface Props {
 
 export const BlogCard = ({
   title,
+  image,
   description,
   author,
   slug
@@ -19,6 +22,15 @@ export const BlogCard = ({
   return (
     <article className="rounded-2xl  bg-moon-50/70">
       {/* Figure */}
+      <figure>
+        <Image
+          src={image}
+          alt={title}
+          width={800}
+          height={500}
+          className="rounded-t-2xl aspect-video object-center object-cover"
+        />
+      </figure>
       <div className="card p-8">
         <h2 className="text-xl font-bold mb-3 md:text-2xl ">
           <Link className="hover:underline" href={`/blog/${slug}`}>{title}</Link>
