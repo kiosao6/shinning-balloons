@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "prisma": "npx prisma migrate deploy && prisma generate",
     "dev": "next dev --turbo",
-    "build": "next build",
+    "build": "npm run prisma && next build",
     "start": "next start",
     "lint": "next lint",
     "seed": "ts-node seed/seed-database.ts"

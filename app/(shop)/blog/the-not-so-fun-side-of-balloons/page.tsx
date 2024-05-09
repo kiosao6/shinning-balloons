@@ -1,4 +1,4 @@
-import { BreadCrumb } from "@/components";
+import { BreadCrumb } from "@/components/index";
 import Image from "next/image";
 import Link from "next/link";
 import { TbArrowNarrowLeft } from "react-icons/tb";

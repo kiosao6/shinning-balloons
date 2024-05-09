@@ -1,6 +1,5 @@
-import { getCookies, getProductById } from "@/actions";
 import { getOrder } from "@/actions/getOrder";
-import { BreadCrumb, LoginInformation, ShippingAddress, PaymentInformation, ReviewInformation, OrderReview, StepIndicator, CheckIcon } from "@/components/index";
+import { BreadCrumb, OrderReview, StepIndicator, CheckIcon } from "@/components/index";
 import { notFound } from "next/navigation";
 
 
