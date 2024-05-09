@@ -22,7 +22,7 @@ export default function BlogPage() {
     <main className="px-8 mx-auto max-w-6xl text-base-heading">
       <section className="my-16 max-w-3xl mx-auto">
         <p className="text-base mb-2 text-moon-500 font-semibold mx-auto md:text-center md:text-lg">Blog</p>
-        <h1 className="text-4xl mb-6 font-bold tracking-tight md:text-center lg:text-5xl">The Shinning Ballons Blog</h1>
+        <h1 className="text-4xl mb-6 font-bold tracking-tight md:text-center lg:text-5xl">The Shinning Balloons Blog</h1>
         <p className="text-base text-base-heading/70 max-w-3xl md:text-center leading-relaxed mx-auto md:text-lg">Discover everything you need to know about elevating your balloon experience in our blog.</p>
       </section>
 
