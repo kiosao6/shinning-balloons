@@ -37,11 +37,11 @@ export const Product = ({
         />
         {discountedPrice && <SaleBadge />}
         <div className="flex flex-col justify-center items-start">
-          <p className="text-base-heading/70 font-medium text-base lg:text-lg pt-2 group-hover:underline">
+          <p className="text-base-heading text-sm lg:text-base pt-2 group-hover:underline">
             {title}
           </p>
           <span>
-            <span className="text-sm lg:text-base font-medium text-base-heading/70">{currencyFormat(discountedPrice || price)}</span>
+            <span className="text-sm lg:text-base text-base-heading">{currencyFormat(discountedPrice || price)}</span>
             {discountedPrice && (
               <span className="text-sm lg:text-base pl-2 text-base-heading/40 line-through pr-2">{currencyFormat(price)}</span>
             )}

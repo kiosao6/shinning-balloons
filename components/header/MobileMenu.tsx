@@ -4,6 +4,8 @@ import { useStore } from "@/store/ui-store"
 import Link from "next/link"
 import styles from "./MenuItem.module.css"
 import { Button } from "@/components/index";
+import { useSession } from "next-auth/react";
+import { LogoutButton } from "./LogoutButton";
 
 const links = [
   {
@@ -18,15 +20,12 @@ const links = [
     href: "/cart",
     label: "Cart",
   },
-  {
-    href: "/login",
-    label: "Login",
-  },
-
 ]
 
 export const MobileMenu = () => {
   const toggleMenu = useStore(state => state.toggleMenu);
+  const { data: session } = useSession();
+  const isAuthenticated = !!session?.user;
 
   const onClick = () => {
     toggleMenu();
@@ -50,6 +49,20 @@ export const MobileMenu = () => {
               </Link>
 
             ))
+          }
+          {
+            isAuthenticated && (
+              <LogoutButton />
+            )
+          }
+
+          {
+            !isAuthenticated && (
+              <Link href="/login" onClick={onClick} className={`${styles.link} flex items-center py-3 border-b justify-between text-lg text-gray-text font-medium hover:text-base-heading/70`}>
+                Login
+                <IoChevronForwardOutline size={15} />
+              </Link>
+            )
           }
 
           <Button

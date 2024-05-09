@@ -11,7 +11,7 @@ export const SectionThree = () => {
       </div>
 
       <ProductGridHome className="px-8" />
-      <Button className="bg-moon-500 mt-14 mx-auto block text-base rounded-[0.5rem] text-white hover:bg-moon-600 w-64 p-0" variant="default" size="lg">
+      <Button className="bg-moon-500 h-12 mt-14 mx-auto block text-base rounded-[0.5rem] text-white hover:bg-moon-600 w-64 p-0" variant="default" size="lg">
         <Link className="w-full h-full flex justify-center items-center" href="/shop">Find more colors</Link>
       </Button>
 

@@ -23,7 +23,7 @@ export const MenuButton = () => {
       <button
         aria-label='Menu button'
         onClick={() => onClick()}
-        className={`${styles.burger} relative w-8 h-8 flex items-center justify-center md:hidden z-30`}
+        className={`${styles.burger} relative mr-[33px] w-8 h-8 flex items-center justify-center md:hidden z-30`}
       >
         <MenuIcon data-hide={isMenuOpen} />
         <CrossIcon data-hide={!isMenuOpen} />

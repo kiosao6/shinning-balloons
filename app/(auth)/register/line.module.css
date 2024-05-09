@@ -1,0 +1,25 @@
+
+
+.line::before{
+  right: 0.5rem;
+  margin-left: -50%;
+  background-color: #e4e4e7;
+  content: '';
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.line::after{
+  left: 0.5rem;
+  margin-right: -50%;
+  background-color: #e4e4e7;
+  content: '';
+  display: inline-block;
+  height: 1px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}

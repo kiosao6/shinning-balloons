@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+      width: 4px;
+  }
+  .no-scrollbar::-webkit-scrollbar-thumb {
+    background-color: #C1C1C1;
+    border-radius: 6px;
+}
+
+}
+
+div:where([data-title]) {
+    font-weight: 400;
+}
+
+:where([data-sonner-toast]) :where([data-icon]) svg {
+    color: #21A67A
+}
+
+body {
+  margin: 0;
+}
+
+body[style] {
+  margin-right: 0px !important;
+}

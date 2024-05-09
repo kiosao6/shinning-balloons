@@ -1,5 +1,5 @@
 
-
+import bcryptjs from "bcryptjs";
 
 
 interface SeedProduct {
@@ -15,12 +15,29 @@ interface SeedProduct {
 
 
 interface SeedData {
+  users: SeedUser[];
   categories: string[];
   products: SeedProduct[];
 }
 
+interface SeedUser {
+  email: string;
+  password: string
+  name: string
+  address: string
+}
+
 
 export const initialData: SeedData = {
+
+  users: [
+    {
+      name: "Gabriel Maestre",
+      email: "gabriel@gmail.com",
+      password: bcryptjs.hashSync("gabriel", 10),
+      address: "Braddy Cooper, New Civil Colony, Salt Lake City, Utah, United States, 2971 Avenue."
+    }
+  ],
 
   categories: ['Latex', 'Numbers', 'Decoration'],
 

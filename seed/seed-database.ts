@@ -3,11 +3,20 @@ import prisma from '../lib/prisma'
 
 async function main() {
   console.log('Seed executed')
+
+  await prisma.orderItem.deleteMany();
+  await prisma.orderAddress.deleteMany();
+  await prisma.order.deleteMany();
+  await prisma.user.deleteMany();
   await prisma.product.deleteMany();
   await prisma.category.deleteMany();
 
-  const { categories, products } = initialData;
+  const { categories, products, users } = initialData;
   console.log(products.length);
+
+  await prisma.user.createMany({
+    data: users
+  })
 
 
   const categoriesData = categories.map(category => ({
