@@ -27,6 +27,7 @@ export const BlogCard = ({
           src={image}
           alt={title}
           width={800}
+          priority
           height={500}
           className="rounded-t-2xl aspect-video object-center object-cover"
         />
