@@ -7,7 +7,7 @@ export const SectionThree = () => {
     <section className="my-16 mx-auto max-w-7xl ">
       <div className="mx-auto px-8 lg:px-0">
         <h1 className="text-3xl mb-3 lg:mb-6 font-bold tracking-tight text-center lg:text-5xl">Trending Colors</h1>
-        <p className="text-base pb-10 text-base-heading/70 max-w-3xl text-center leading-relaxed mx-auto md:text-lg">Discover the latest trending colors in balloon decor.</p>
+        <p className="text-base pb-10 text-base-heading/60 max-w-3xl text-center leading-relaxed mx-auto md:text-lg">Discover the latest trending colors in balloon decor.</p>
       </div>
 
       <ProductGridHome className="px-8" />

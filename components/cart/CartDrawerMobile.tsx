@@ -82,7 +82,7 @@ export function CartDrawerMobile() {
             ) : (
               <div className="bg-white mx-auto p-6 md:w-[400px] z-50 lg:w-[380px]">
                 <p className="text-lg w-full font-medium text-center pb-1">Cart</p>
-                <p className="mb-8 text-xs text-center text-base-heading/70">This is a quick preview of your cart. Visit your cart page to edit your products and get more information about payment.</p>
+                <p className="mb-8 text-xs text-center text-base-heading/60">This is a quick preview of your cart. Visit your cart page to edit your products and get more information about payment.</p>
 
                 {
                   isLoaded && (
@@ -108,10 +108,10 @@ export function CartDrawerMobile() {
 
                                 {
                                   (product.number || product.number === 0) && (
-                                    <p className="text-base-heading/70 text-xs">Number: {product?.number}</p>
+                                    <p className="text-base-heading/60 text-xs">Number: {product?.number}</p>
                                   )
                                 }
-                                <p className="text-base-heading/70 text-xs">Quantity: {product.quantity}</p>
+                                <p className="text-base-heading/60 text-xs">Quantity: {product.quantity}</p>
                               </div>
 
                               <div className="pl-8 w-24 flex flex-col items-end">

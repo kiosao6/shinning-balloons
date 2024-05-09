@@ -77,7 +77,7 @@ export default async function ProductPage({
           </div>
 
           {/* Description Section */}
-          <p className="text-sm md:text-base leading-relaxed mt-2 md:mt-4 text-base-heading/70">
+          <p className="text-sm md:text-base leading-relaxed mt-2 md:mt-4 text-base-heading/60">
             {description}
           </p>
 
@@ -88,7 +88,7 @@ export default async function ProductPage({
 
       <section className="mx-auto max-w-6xl mb-16">
         <h3 className="text-3xl mb-3 lg:mb-6 font-bold tracking-tight text-center lg:text-5xl">Related Balloons</h3>
-        <p className="text-base pb-10 text-base-heading/70 max-w-3xl text-center leading-relaxed mx-auto md:text-lg">You might also consider these balloons</p>
+        <p className="text-base pb-10 text-base-heading/60 max-w-3xl text-center leading-relaxed mx-auto md:text-lg">You might also consider these balloons</p>
         <ProductGridRelated slug={slug} />
       </section>
     </main>

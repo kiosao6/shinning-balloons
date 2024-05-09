@@ -41,7 +41,7 @@ export const AccordionProduct = ({
       <AccordionItem value="item-2">
         <AccordionTrigger>Payment and Delivery</AccordionTrigger>
         <AccordionContent className="leading-relaxed">
-          <p>At checkout, explore our Test Payment option for demo purposes. This allows you to experience our seamless payment process in a simulated environment, ensuring a smooth transactional experience. Please note, this feature is designed solely for demonstration purposes and does not process real payments.</p>
+          <p className="text-base-heading/60">At checkout, explore our Test Payment option for demo purposes. This allows you to experience our seamless payment process in a simulated environment, ensuring a smooth transactional experience. Please note, this feature is designed solely for demonstration purposes and does not process real payments.</p>
         </AccordionContent>
       </AccordionItem>
     </Accordion>

@@ -62,7 +62,7 @@ export const CartResume = () => {
             {/* Desktop Design */}
             <div className="justify-between hidden lg:flex">
               <div className="space-y-6 w-fit">
-                <div className="flex text-[#858585]">
+                <div className="flex text-base-heading/70">
                   <p className="w-96 uppercase text-sm tracking-wider font-medium">Product</p>
                   <p className="w-48 uppercase text-sm tracking-wider font-medium">Quantity</p>
                   <p className="uppercase text-sm tracking-wider font-medium">Price</p>
@@ -85,7 +85,7 @@ export const CartResume = () => {
                           <div className="flex flex-col gap-1">
                             <Link
                               href={`/shop/${product.category}`}
-                              className="text-sm capitalize text-[#858585] leading-5 hover:underline transition-all w-fit">{`${product.category}`}</Link>
+                              className="text-sm capitalize text-base-heading/70 leading-5 hover:underline transition-all w-fit">{`${product.category}`}</Link>
                             <Link
                               href={`/shop/${product.category}/${product.slug}`}
                               className="text-base text-base-heading leading-5 hover:underline transition-all w-fit">{`${product.title}`}</Link>

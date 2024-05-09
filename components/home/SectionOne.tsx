@@ -9,7 +9,7 @@ export const SectionOne = () => {
     <section className="mt-16 mb-16 flex px-8 flex-col max-w-7xl mx-auto lg:flex-row lg:justify-between lg:gap-8">
         <div className="max-w-xl mx-auto lg:mx-0">
           <p className="text-5xl mb-10 font-bold tracking-tight text-center lg:text-left lg:text-6xl lg:mb-6">Never miss a celebration again</p>
-          <h1 className="text-base leading-relaxed mb-10 text-base-heading/80 mx-auto text-center lg:text-left lg:text-lg lg:mb-6">At Shinning Balloons, we pride ourselves on offering a collection of balloons crafted to the highest standards of quality, ensuring that every balloon adds a touch of elegance to any occasion or celebration to elevate your décor and create unforgettable memories.</h1>
+          <h1 className="text-base leading-relaxed mb-10 text-base-heading/70 mx-auto text-center lg:text-left lg:text-lg lg:mb-6">At Shinning Balloons, we pride ourselves on offering a collection of balloons crafted to the highest standards of quality, ensuring that every balloon adds a touch of elegance to any occasion or celebration to elevate your décor and create unforgettable memories.</h1>
           <MiniList />
           <Button className="bg-moon-500 h-12 mx-auto block text-base rounded-[0.5rem] text-white hover:bg-moon-600 w-64 p-0 md:mx-auto lg:mx-0" variant="default" size="lg">
             <Link className="w-full h-full flex justify-center items-center" href="/shop">Shop now</Link>

@@ -15,7 +15,7 @@ export const LoginInformation = ({
         <StepIndicator step={1} />
         <div className="flex flex-col gap-1">
           <div className="flex gap-3 items-center mb-1">
-            <span className="uppercase text-base text-base-heading/70">Login</span>
+            <span className="uppercase text-base font-medium">Login</span>
             <CheckIcon />
           </div>
           <div className="md:flex items-center font-semibold gap-x-4 max-w-xs [&>*]:text-sm">

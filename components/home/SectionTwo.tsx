@@ -28,7 +28,7 @@ export const SectionTwo = () => {
     <section className="my-16 mx-auto bg-[#F5F5F5]">
       <div className="max-w-7xl mx-auto px-8 lg:px-0 py-16">
         <h1 className="text-3xl mb-3 lg:mb-6 font-bold tracking-tight text-center lg:text-5xl">Browse by Category</h1>
-        <p className="text-base pb-10 text-base-heading/70 max-w-3xl text-center leading-relaxed mx-auto md:text-lg">Explore our categories for balloon inspiration and variety.</p>
+        <p className="text-base pb-10 text-base-heading/60 max-w-3xl text-center leading-relaxed mx-auto md:text-lg">Explore our categories for balloon inspiration and variety.</p>
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 lg:gap-8 lg:px-8">
 
           {

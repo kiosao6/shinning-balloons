@@ -50,8 +50,8 @@ export const Footer = () => {
             <div className="flex flex-col justify-center items-center gap-2 mt-3 mb-10 [&>a]:w-fit md:items-start">
               <Link href="/cart" className="hover:underline px-2 md:p-0">Cart</Link>
               <Link href="/checkout" className="hover:underline px-2 md:p-0">Checkout</Link>
-              <Link href="/blog" className="hover:underline px-2 md:p-0">Number Balloons</Link>
-              <Link href="/blog" className="hover:underline px-2 md:p-0">Latex Balloons</Link>
+              <Link href="/shop/numbers" className="hover:underline px-2 md:p-0">Number Balloons</Link>
+              <Link href="/shop/latex" className="hover:underline px-2 md:p-0">Latex Balloons</Link>
             </div>
           </div>
 

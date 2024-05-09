@@ -80,7 +80,7 @@ export function CartPopover() {
                   <EmptyCart />
                 ) : (
                   <>
-                    <p className="text-base w-full font-medium text-center pb-1">Cart</p>
+                    <p className="text-lg w-full font-medium text-center pb-1">Cart</p>
                     <p className="mb-8 text-xs text-center text-base-heading/70">This is a quick preview of your cart. Visit your cart page to edit your products and get more information about payment.</p>
                     {
                       isLoaded && (

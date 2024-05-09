@@ -29,7 +29,7 @@ export const PaymentInformation = () => {
           <StepIndicator step={3} />
           <div className="flex flex-col gap-1 w-full">
             <div className="flex gap-3 items-center mb-1">
-              <span className="uppercase text-base text-[#858585] font-medium">Payment information</span>
+              <span className="uppercase text-base font-medium">Payment information</span>
               {
                 !isOpen && (
                   <CheckIcon />

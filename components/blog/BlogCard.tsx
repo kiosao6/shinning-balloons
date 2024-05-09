@@ -32,7 +32,7 @@ export const BlogCard = ({
         />
       </figure>
       <div className="card p-8">
-        <h2 className="text-xl font-bold mb-3 md:text-2xl ">
+        <h2 className="text-2xl tracking-tight font-bold mb-4 md:text-2xl ">
           <Link className="hover:underline" href={`/blog/${slug}`}>{title}</Link>
         </h2>
         <p className="text-base-heading/70 mb-6">{description}</p>

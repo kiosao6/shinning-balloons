@@ -59,8 +59,8 @@ export default async function OrderPage({ params }: Props) {
         <div className="my-12 space-y-1">
           <h1 className="text-4xl max-w-3xl font-bold mb-4 tracking-tight lg:text-5xl">Thank you! Your order was successfully placed.</h1>
           {/* <p>Your order was successfully placed.</p> */}
-          <p>We have sent the order confirmation details to <span className="font-semibold">{email}.</span></p>
-          <p>Order ID: <span className="font-semibold">{params.id}</span></p>
+          <p className="text-base-heading/70">We have sent the order confirmation details to <span className="font-semibold text-base-heading">{email}.</span></p>
+          <p className="text-base-heading/70">Order ID: <span className="text-base-heading font-semibold">{params.id}</span></p>
         </div>
 
         <div className="justify-between lg:flex">
@@ -73,7 +73,7 @@ export default async function OrderPage({ params }: Props) {
                   <StepIndicator step={1} />
                   <div className="flex flex-col gap-1">
                     <div className="flex gap-3 items-center mb-1">
-                      <span className="uppercase text-base text-base-heading/70">Buyer information</span>
+                      <span className="uppercase text-base font-medium">Buyer information</span>
                       <CheckIcon />
                     </div>
                     <div className="md:flex items-center font-semibold gap-x-4 max-w-xs [&>*]:text-sm">
@@ -116,7 +116,7 @@ export default async function OrderPage({ params }: Props) {
                     <StepIndicator step={3} />
                     <div className="flex flex-col gap-1 w-full">
                       <div className="flex gap-3 items-center mb-1">
-                        <span className="uppercase text-base text-[#858585] font-medium">Payment information</span>
+                        <span className="uppercase text-base font-medium">Payment information</span>
                         <CheckIcon />
                       </div>
                       <div className="flex items-center font-semibold gap-x-6">
