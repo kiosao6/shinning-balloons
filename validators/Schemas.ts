@@ -31,9 +31,6 @@ export const ShippingSchema = z.object({
   address: z.string({ required_error: 'Address field cannot be empty'}).min(5, {
     message: 'Address must be at least 5 characters long'
   }),
-  company: z.string().min(5, {
-    message: 'Company must be at least 5 characters long'
-  }).optional(),
   postalCode: z.string({ required_error: 'Postal code field cannot be empty'}).min(4, {
     message: 'Postal code must be at least 4 characters long'
   }),

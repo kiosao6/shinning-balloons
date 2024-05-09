@@ -33,12 +33,12 @@ export const ShippingForm = ({addressCookie}: Props) => {
   const form = useForm<z.infer<typeof ShippingSchema>>({
     resolver: zodResolver(ShippingSchema),
     defaultValues: {
-      name: cookies.name || null,
-      address: cookies.address || null,
-      city: cookies.city || null,
-      postalCode: cookies.postalCode || null,
-      state: cookies.state || null,
-      phone: cookies.phone || null,
+      name: cookies.name || undefined,
+      address: cookies.address || undefined,
+      city: cookies.city || undefined,
+      postalCode: cookies.postalCode || undefined,
+      state: cookies.state || undefined,
+      phone: cookies.phone || undefined,
     }
   });
 
@@ -79,17 +79,15 @@ export const ShippingForm = ({addressCookie}: Props) => {
 
           {/* Company Input */}
           <FormField
-            control={form.control}
             name="company"
+            // control={form.control}
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Company</FormLabel>
                 <FormControl>
                   <Input
                     placeholder="Company Name (Optional)"
-                    className={`border border-zinc-300 pl-4 rounded-[0.5rem] hover:border-zinc-400 transition-all
-                    ${form.formState.errors.company && 'bg-red-danger-bg/40 border-red-danger !outline-red-danger hover:border-red-danger'}
-                    `}
+                    className={`border border-zinc-300 pl-4 rounded-[0.5rem] hover:border-zinc-400 transition-all`}
                     {...field}
                   />
 

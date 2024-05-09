@@ -61,7 +61,6 @@ export const RegisterForm = () => {
                 <FormLabel>Full Name</FormLabel>
                 <FormControl>
                   <Input
-                    autoFocus
                     placeholder="Enter your full name"
                     className={`border border-zinc-300 pl-4 rounded-[0.5rem] hover:border-zinc-400 transition-all
                     ${form.formState.errors.name && 'bg-red-danger-bg/40 border-red-danger !outline-red-danger hover:border-red-danger'}
