@@ -152,7 +152,7 @@ export function CartDrawerMobile() {
                     size="lg"
                     className="h-12 w-full border block text-base rounded-[0.5rem] md:max-w-full px-8 hover:border-zinc-400">
 
-                    <Link href="/cart" className="text-sm w-full h-full">View Cart</Link>
+                    <Link href="/cart" className="text-sm w-full h-full flex justify-center items-center">View Cart</Link>
                   </Button>
                 </div>
 
