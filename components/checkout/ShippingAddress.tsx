@@ -15,7 +15,7 @@ export const ShippingAddress = ({addressCookie}: Props) => {
 
   const fullAddress = JSON.parse(addressCookie ?? '{}');
   const router = useRouter();
-  const pathName = usePathname();
+  const pathName = usePathname();  
 
   const onClick = () => {
     router.push(pathName + "?step=shipping")

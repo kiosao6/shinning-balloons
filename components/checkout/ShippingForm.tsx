@@ -45,8 +45,7 @@ export const ShippingForm = ({addressCookie}: Props) => {
   const onSubmit = () => {
     const data = JSON.stringify(form.getValues());
     setCookies("shippingAddress", data);
-    router.push(pathName + "?step=payment")
-    
+    router.push(pathName + "?step=payment") 
   }
 
 

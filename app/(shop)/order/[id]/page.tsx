@@ -13,8 +13,8 @@ interface Props {
 
 
 export default async function OrderPage({ params }: Props) {
-  
-  
+
+
   const links = [
     {
       name: 'Home',
@@ -24,9 +24,9 @@ export default async function OrderPage({ params }: Props) {
       name: 'Order',
       href: `/order/${params.id}`
     },
-  
+
   ]
-  
+
   const { address, products, name, email, subtotal, tax: taxes, total, shippingMethod, number } = await getOrder(params.id)
   const addressData = address[0];
   const totals = {
@@ -62,7 +62,8 @@ export default async function OrderPage({ params }: Props) {
           <p className="text-base-heading/70">Order ID: <span className="text-base-heading font-semibold">{params.id}</span></p>
         </div>
 
-        <div className="justify-between lg:flex">
+        <div className="justify-between lg:flex lg:flex-row-reverse">
+          <OrderReview totals={totals} products={products} />
           <div className="space-y-6 w-full [&>*]:lg:pr-6">
 
             <div className="w-full">
@@ -99,7 +100,7 @@ export default async function OrderPage({ params }: Props) {
                       </div>
 
                       <div className="flex items-center font-semibold gap-x-6 max-w-xs">
-                      <p className="text-sm">{addressData.address}, {addressData.city}, {addressData.postalCode}, {addressData.state}.</p>
+                        <p className="text-sm">{addressData.address}, {addressData.city}, {addressData.postalCode}, {addressData.state}.</p>
                       </div>
 
                     </div>
@@ -129,7 +130,7 @@ export default async function OrderPage({ params }: Props) {
 
           </div>
 
-          <OrderReview totals={totals} products={products} />
+
 
         </div>
 
