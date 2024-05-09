@@ -36,7 +36,7 @@ export default async function CheckoutPage() {
 
   if(!productsCookie) return notFound();
 
-  const products = JSON.parse(productsCookie!.value || '[]');
+  const products = JSON.parse(productsCookie!.value || '{}');
   const productIds = products.map((p: { id: string }) => p.id);
   // Get the products from the database
 

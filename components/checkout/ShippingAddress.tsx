@@ -13,7 +13,7 @@ export const ShippingAddress = ({addressCookie}: Props) => {
   const searchParams = useSearchParams();
   const isOpen = searchParams.get("step") === "shipping" || !searchParams.get("step");
 
-  const {address, postalCode, state, phone, city } = JSON.parse(addressCookie!);
+  const fullAddress = JSON.parse(addressCookie ?? '{}');
   const router = useRouter();
   const pathName = usePathname();
 
@@ -43,8 +43,8 @@ export const ShippingAddress = ({addressCookie}: Props) => {
               ) : (
                 <div className="flex items-center font-semibold gap-x-6 max-w-xs">
                   {
-                    !!address ? (
-                      <p className="text-sm">{address}, {city}, {postalCode}, {state}.</p>
+                    !!fullAddress ? (
+                      <p className="text-sm">{fullAddress.address ?? ''}, {fullAddress.city ?? ''}, {fullAddress.postalCode ?? ''}, {fullAddress.state ?? ''}.</p>
                     ) : ''
                   }
                 </div>
