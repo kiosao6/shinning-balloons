@@ -58,7 +58,7 @@ export const Footer = () => {
         </div>
 
       </div>
-      <p className="leading-relaxed text-base-heading max-w-7xl mx-auto">Developed by <a href="#" className="font-medium text-base-heading underline">Gabriel Maestre</a> using Next.js App Router Syntax.</p>
+      <p className="leading-relaxed text-base-heading max-w-7xl mx-auto">Developed by <a href="https://www.gabrielmaestre.com" className="font-medium text-base-heading underline">Gabriel Maestre</a> using Next.js App Router Syntax.</p>
 
     </footer>
   )
