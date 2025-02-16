@@ -36,21 +36,6 @@ export default async function OrderPage({ params }: Props) {
     total
   };
 
-  const productsToSend = products.map(product => {
-    return {
-      id: product.id,
-      title: product.title,
-      description: product.description,
-      slug: product.slug,
-      price: product.price,
-      discountedPrice: product.discountedPrice,
-      tags: product.tags,
-      material: product.material,
-      quantity: product.quantity,
-      number: null
-    }
-  })
-
   return (
     <main className="px-8 mx-auto max-w-6xl text-base-heading">
       <section className="mt-10 mb-16 max-w-6xl mx-auto">

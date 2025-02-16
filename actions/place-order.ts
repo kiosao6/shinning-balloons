@@ -12,7 +12,7 @@ interface Products {
 }
 
 
-export const placeOrder = async(products: Products[], shippingMethod: string | undefined, address: string ) => {
+export const placeOrder = async(products: Products[], shippingMethod: string | undefined, address: string ) =>  {
 
   const session = await auth();
   const userId = session?.user.id;
@@ -87,7 +87,7 @@ export const placeOrder = async(products: Products[], shippingMethod: string | u
         orderId: order.id
       }
     })
-
+    console.log(order.id)
     return order.id
 
   } catch (error) {

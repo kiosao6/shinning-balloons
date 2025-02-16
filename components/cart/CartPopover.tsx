@@ -89,9 +89,9 @@ export function CartPopover() {
                             cart.map((product, index) => (
                               <div key={index}>
                                 <div className={`flex gap-4 border-b pb-4 ${index === cart.length - 1 && 'border-none pb-0'}`}>
-                                  <Link href={`/shop/${product.category.toLowerCase()}/${product.slug}`}>
+                                  <Link href={`/shop/${product.category.toLowerCase()}/${product.slug.toLowerCase()}`}>
                                     <Image
-                                      src={`/colors/${product.slug}.png`}
+                                      src={`/colors/${product.slug.toLowerCase()}.png`}
                                       alt={`${product.title} Latex Balloon`}
                                       width={80}
                                       height={80}
@@ -101,7 +101,7 @@ export function CartPopover() {
                                   </Link>
                                   <div className="space-y-1 w-36">
                                     <Link
-                                      href={`/shop/${product.category}/${product.slug}`}
+                                      href={`/shop/${product.category.toLowerCase()}/${product.slug.toLowerCase()}`}
                                       className="text-sm text-base-heading leading-5 hover:underline transition-all">{`${product.title}`}</Link>
 
                                     {

@@ -37,7 +37,6 @@ export const ReviewInformation = ({
     const order = await placeOrder(products, shipping, address );
     clearCart();
     router.push(`/order/${order}`)
-    
   };
 
   return (

@@ -17,7 +17,6 @@ export const getOrder = async(id: string) => {
       OrderItem: true,
       OrderAddress: true,
     }
-
   })
 
   if(!order) {

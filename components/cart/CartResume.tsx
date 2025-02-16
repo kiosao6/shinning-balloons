@@ -71,9 +71,9 @@ export const CartResume = () => {
                   products.map((product, index) => (
                     <div key={index} className="border-b pb-6 w- border-zinc-300 flex">
                       <div className="flex gap-4 w-96">
-                        <Link href={`/shop/${product.category}/${product.slug}`}>
+                        <Link href={`/shop/${product.category.toLowerCase()}/${product.slug.toLowerCase()}`}>
                           <Image
-                            src={`/colors/${product.slug}.png`}
+                            src={`/colors/${product.slug.toLowerCase()}.png`}
                             alt={`${product.title} Latex Balloon`}
                             width={110}
                             height={110}
@@ -84,10 +84,10 @@ export const CartResume = () => {
                         <div className=" w-full">
                           <div className="flex flex-col gap-1">
                             <Link
-                              href={`/shop/${product.category}`}
+                              href={`/shop/${product.category.toLowerCase()}`}
                               className="text-sm capitalize text-base-heading/70 leading-5 hover:underline transition-all w-fit">{`${product.category}`}</Link>
                             <Link
-                              href={`/shop/${product.category}/${product.slug}`}
+                              href={`/shop/${product.category.toLowerCase()}/${product.slug.toLowerCase()}`}
                               className="text-base text-base-heading leading-5 hover:underline transition-all w-fit">{`${product.title}`}</Link>
                             {
                               (product.number || product.number === 0) && (
