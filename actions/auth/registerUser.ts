@@ -10,10 +10,29 @@ import bcryptjs from 'bcryptjs';
 export const registerUser = async(name: string, email: string, password: string) => {
 
   try {
+    // Lets verify is user exists. If not, then we can create it
+
+    const trimmedEmail = email.trim().toLowerCase();
+    const trimmedName = name.trim();
+
+    const existingUser = await prisma.user.findUnique({
+      where: { email: trimmedEmail}
+    })
+
+
+    if(existingUser)
+    {
+      return {
+        ok: false,
+        message: 'This email address is already taken. Please try another one'
+      }
+    }
+
+
     const user = await prisma.user.create({
       data: {
-        name,
-        email: email.toLowerCase(),
+        name: trimmedName,
+        email:trimmedEmail,
         password: bcryptjs.hashSync(password)
       },
       select: {
@@ -25,7 +44,8 @@ export const registerUser = async(name: string, email: string, password: string)
 
     return {
       ok: true,
-      user: user
+      user: user,
+      message: 'Redirecting....'
     }
   } catch (error) {
     console.log(error)

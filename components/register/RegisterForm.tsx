@@ -42,7 +42,17 @@ export const RegisterForm = () => {
   })
 
   const onSubmit = async(values: z.infer<typeof RegisterSchema>) => {
-    const resp = await registerUser(values.name, values.email, values.password);
+    const { ok, message } = await registerUser(values.name, values.email, values.password);
+    if(!ok)
+    {
+      form.setError("email", {
+        type: 'manual',
+        message
+      })
+
+      console.log(message);
+      return
+    }
     await login(values.email.toLowerCase(), values.password);
     window.location.replace('/')
   }
@@ -63,7 +73,7 @@ export const RegisterForm = () => {
                   <Input
                     placeholder="Enter your full name"
                     className={`border border-zinc-300 pl-4 rounded-[0.5rem] hover:border-zinc-400 transition-all
-                    ${form.formState.errors.name && 'bg-red-danger-bg/40 border-red-danger !outline-red-danger hover:border-red-danger'}
+                    ${form.formState.errors.name  && 'bg-red-danger-bg/40 border-red-danger !outline-red-danger hover:border-red-danger'}
                     `}
                     {...field}
                   />
@@ -85,7 +95,7 @@ export const RegisterForm = () => {
                   <Input
                     placeholder="Enter your email"
                     className={`border border-zinc-300 pl-4 rounded-[0.5rem] hover:border-zinc-400 transition-all
-                    ${form.formState.errors.email && 'bg-red-danger-bg/40 border-red-danger !outline-red-danger hover:border-red-danger'}
+                    ${(form.formState.errors.email) && 'bg-red-danger-bg/40 border-red-danger !outline-red-danger hover:border-red-danger'}
                     `}
                     {...field}
                   />

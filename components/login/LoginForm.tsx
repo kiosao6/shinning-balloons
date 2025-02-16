@@ -95,7 +95,7 @@ export const LoginForm = () => {
                   <div className="!relative flex items-center justify-center">
                     <Input
                       type={showPassword ? 'text' : 'password'}
-                      placeholder="Create a password"
+                      placeholder="Enter your password"
                       className={`border border-zinc-300 pl-4 rounded-[0.5rem] hover:border-zinc-400 transition-all
                       ${form.formState.errors.password && 'bg-red-danger-bg/40 border-red-danger !outline-red-danger hover:border-red-danger'}
                       `}

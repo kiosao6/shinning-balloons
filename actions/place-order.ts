@@ -12,13 +12,13 @@ interface Products {
 }
 
 
-export const placeOrder = async(products: Products[], shippingMethod: string | undefined, address: string ) =>  {
+export const placeOrder = async (products: Products[], shippingMethod: string | undefined, address: string) => {
 
   const session = await auth();
   const userId = session?.user.id;
 
-  if(!userId) {
-    return{
+  if (!userId) {
+    return {
       ok: false,
       message: 'Must be logged in'
     }
@@ -91,7 +91,11 @@ export const placeOrder = async(products: Products[], shippingMethod: string | u
     return order.id
 
   } catch (error) {
-    console.log(error)
+    console.error('Error al crear la orden:', error);
+    return {
+      ok: false,
+      message: 'Error al crear la orden'
+    };
   }
 
 
