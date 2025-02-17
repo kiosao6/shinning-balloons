@@ -5,14 +5,15 @@ import { notFound } from "next/navigation";
 
 
 interface Props {
-  params: {
+  params: Promise<{
     id: string;
-  }
+  }>
 }
 
 
 
-export default async function OrderPage({ params }: Props) {
+export default async function OrderPage(props: Props) {
+  const params = await props.params;
 
 
   const links = [

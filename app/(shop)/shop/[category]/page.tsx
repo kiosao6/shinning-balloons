@@ -3,13 +3,13 @@ import ProductCategoryGrid from "@/components/shop/ProductCategoryGrid";
 import { Suspense } from "react";
 
 interface Props {
-  params: {
+  params: Promise<{
     category: string;
-  },
-  searchParams: {
+  }>,
+  searchParams: Promise<{
     page?: string;
     color?: string;
-  }
+  }>
 }
 const links = [
   {
@@ -21,10 +21,9 @@ const links = [
     href: '/shop'
   },
 ]
-export default async function ShopPage({
-  params,
-  searchParams
-}: Props) {
+export default async function ShopPage(props: Props) {
+  const searchParams = await props.searchParams;
+  const params = await props.params;
 
   return (
     <main>

@@ -1,9 +1,10 @@
 
-'use client'
-
+'use client';
 import styles from "./MenuButton.module.css"
 import { MobileMenu } from './MobileMenu'
 import { useStore } from '@/store/ui-store'
+
+import type { JSX } from "react";
 
 export const MenuButton = () => {
   // Global state management

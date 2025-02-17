@@ -5,18 +5,18 @@ import { cookies } from "next/headers"
 
 
 export const setCookies = async (name: string, value: string) => {
-  cookies().set(`${name}`, `${value}`)
+  (await cookies()).set(`${name}`, `${value}`)
 }
 
 export const getCookies = async(key: string) => {
-  return cookies().get(key)
+  return (await cookies()).get(key);
 }
 
 export const getCheckoutStep = async() => {
-  if(cookies().has("shippingAddress") && !cookies().has("paymentMethod")) {
+  if((await cookies()).has("shippingAddress") && !(await cookies()).has("paymentMethod")) {
     return "payment"
   }
-  if(cookies().has("shippingAddress") && cookies().has("paymentMethod")) {
+  if((await cookies()).has("shippingAddress") && (await cookies()).has("paymentMethod")) {
     return "review"
   }
 

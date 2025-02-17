@@ -8,15 +8,14 @@ import { TbArrowNarrowLeft } from "react-icons/tb";
 
 
 interface Props {
-  params: {
+  params: Promise<{
     slug: string;
-  }
+  }>
 }
 
 
-export default async function ProductPage({
-  params
-}: Props) {
+export default async function ProductPage(props: Props) {
+  const params = await props.params;
 
   const product = await getProductBySlug(params.slug);
   if (!product) {

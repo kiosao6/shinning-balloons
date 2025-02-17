@@ -1,19 +1,9 @@
 import { BreadCrumb } from "@/components/index";
 import Image from "next/image";
 import Link from "next/link";
-import { TbArrowNarrowLeft } from "react-icons/tb";
 
+export default function ArticlePage() {
 
-
-interface Props {
-  params: {
-    slug: string;
-  }
-}
-
-export default function ArticlePage({
-  params
-}: Props) {
   const links = [
     {
       name: "Blog",
@@ -24,6 +14,7 @@ export default function ArticlePage({
       href: "/blog/creative-ways-to-decorate-a-room-with-balloons"
     }
   ]
+
   return (
     <main>
       <section className="mt-10 mb-24 px-8 max-w-6xl mx-auto text-base-heading ">

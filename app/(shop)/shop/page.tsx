@@ -14,14 +14,15 @@ const links = [
 ]
 
 interface Props {
-  searchParams: {
+  searchParams: Promise<{
     page?: string;
     color?: string
-  }
+  }>
 }
 
-export default async function ShopPage({searchParams}:Props) {
- 
+export default async function ShopPage(props:Props) {
+  const searchParams = await props.searchParams;
+
   return (
     <main>
       <section className="mt-10 mb-16 px-8 max-w-6xl mx-auto text-base-heading">

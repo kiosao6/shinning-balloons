@@ -1,20 +1,8 @@
 import { BreadCrumb } from "@/components/index";
 import Image from "next/image";
 import Link from "next/link";
-import { TbArrowNarrowLeft } from "react-icons/tb";
 
-
-
-interface Props {
-  params: {
-    slug: string;
-  }
-}
-
-export default function ArticlePage({
-  params
-}: Props) {
-
+export default function ArticlePage() {
 
   const links = [
     {
