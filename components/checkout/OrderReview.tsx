@@ -40,7 +40,7 @@ export const OrderReview = ({ products: productsFound, totals }: Props) => {
                   width={90}
                   height={90}
                   quality={100}
-                  className="rounded aspect-square w-26 h-fit border hover:shadow-sm  transition-all"
+                  className="rounded-xl aspect-square w-26 h-fit border hover:shadow-sm transition-all"
                 />
                 <div className="space-y-1 w-36">
                   <p

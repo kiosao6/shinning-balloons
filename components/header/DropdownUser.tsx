@@ -31,7 +31,7 @@ export function DropdownUser() {
   }
   const onHandleLogout = async () => {
     toggleMenu()
-    Logout()
+    await Logout()
     window.location.href = '/'
   }
   return (
