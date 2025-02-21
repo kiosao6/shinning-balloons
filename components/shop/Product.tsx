@@ -32,8 +32,7 @@ export const Product = ({
           width={400}
           height={400}
           alt={title}
-          // priority
-          className="w-full mix-blend-overlay aspect-square rounded-xl max-w-sm mx-auto"
+          className="w-full mix-blend-overlay border aspect-square rounded-xl max-w-sm mx-auto"
         />
         {discountedPrice && <SaleBadge />}
         <div className="flex flex-col justify-center items-start">

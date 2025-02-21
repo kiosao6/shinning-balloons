@@ -1,8 +1,5 @@
 import { getOrder } from "@/actions/getOrder";
 import { BreadCrumb, OrderReview, StepIndicator, CheckIcon } from "@/components/index";
-import { notFound } from "next/navigation";
-
-
 
 interface Props {
   params: Promise<{
@@ -22,8 +19,8 @@ export default async function OrderPage(props: Props) {
       href: '/'
     },
     {
-      name: 'Order',
-      href: `/order/${params.id}`
+      name: 'My orders',
+      href: '/orders'
     },
 
   ]

@@ -2,6 +2,7 @@ import {  ProductGridSkeleton, BreadCrumb, ShopNavigation, ColorSelector } from 
 import ProductShopGrid from "@/components/shop/ProductShopGrid";
 import { Suspense } from "react";
 
+
 const links = [
   {
     name: 'Home',
@@ -13,16 +14,10 @@ const links = [
   },
 ]
 
-interface Props {
-  searchParams: Promise<{
-    page?: string;
-    color?: string
-  }>
-}
+type SearchParams = Promise<{ page?: string; color?: string }>;
 
-export default async function ShopPage(props:Props) {
+export default async function ShopPage(props: { searchParams: SearchParams }) {
   const searchParams = await props.searchParams;
-
   return (
     <main>
       <section className="mt-10 mb-16 px-8 max-w-6xl mx-auto text-base-heading">

@@ -19,14 +19,12 @@ export const Header = () => {
         </Link>
         <LogoHeader />
         <CartDrawerMobile />
-        <nav className="hidden md:flex gap-x-8 text-sm font-normal md:items-center">
+        <nav className="hidden md:flex gap-x-8 text-base font-normal md:items-center">
           <UserPopover />
           <Link href="/shop" className="text-base-heading hover:underline">Shop</Link>
           <Link href="/blog" className="text-base-heading hover:underline">Blog</Link>
           <CartPopover />
         </nav>
-
-
       </div>
     </header>
   )

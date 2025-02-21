@@ -1,7 +1,5 @@
 'use client'
 
-
-
 import { zodResolver } from "@hookform/resolvers/zod"
 import { LoginSchema } from '@/validators/Schemas';
 import { useForm } from 'react-hook-form';
@@ -16,16 +14,14 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
+import { LuCheck } from "react-icons/lu";
 import { Input } from "@/components/ui/input"
-import { useState, useTransition, useActionState } from "react";
+import { useState } from "react";
 import { PasswordIcon } from "./PasswordIcon";
 import "react-dom";
-import { authenticate } from "@/actions";
-import { HiExclamationCircle } from "react-icons/hi2";
-import { useFormStatus } from "react-dom";
 import { login } from "@/actions/auth/login";
-import { AlertIcon } from "../ui/AlertIcon";
 import { useSearchParams } from "next/navigation";
+import { LoaderCircle } from "lucide-react";
 
 
 
@@ -35,8 +31,9 @@ export const LoginForm = () => {
   const params = useSearchParams();
   const mustRedirectToCheckout = !!params.get("redirect");
 
-  const [showPassword, setShowPassword] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [showPassword, setShowPassword] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null)
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -49,11 +46,19 @@ export const LoginForm = () => {
     }
   })
 
-  const onSubmit = async(values: z.infer<typeof LoginSchema>) => {
-    const res = await login(values.email, values.password, mustRedirectToCheckout)
-    if(res.error) {
-      setErrorMessage(res.error);
+  const onSubmit = async (values: z.infer<typeof LoginSchema>) => {
+    setIsLoading(true)
+    const { ok, message } = await login(values.email, values.password, mustRedirectToCheckout)
+    if (!ok) {
+
+      form.setError("root", {
+        type: 'manual',
+        message
+      })
+      setIsLoading(false)
+      return;
     }
+    setSuccessMessage(message);
   }
 
   return (
@@ -71,8 +76,8 @@ export const LoginForm = () => {
                 <FormControl>
                   <Input
                     placeholder="Enter your email"
-                    className={`border border-zinc-300 pl-4 rounded-[0.5rem] hover:border-zinc-400 transition-all
-                    ${form.formState.errors.email && 'bg-red-danger-bg/40 border-red-danger !outline-red-danger hover:border-red-danger'}
+                    className={`border border-zinc-300 pl-4 rounded-xl hover:border-zinc-400 transition-all
+                    ${(form.formState.errors.email || form.formState.errors.root) && 'bg-red-100 border-red-500 !outline-red-500 hover:border-red-500'}
                     `}
                     {...field}
                   />
@@ -96,8 +101,8 @@ export const LoginForm = () => {
                     <Input
                       type={showPassword ? 'text' : 'password'}
                       placeholder="Enter your password"
-                      className={`border border-zinc-300 pl-4 rounded-[0.5rem] hover:border-zinc-400 transition-all
-                      ${form.formState.errors.password && 'bg-red-danger-bg/40 border-red-danger !outline-red-danger hover:border-red-danger'}
+                      className={`border border-zinc-300 pl-4 rounded-xl hover:border-zinc-400 transition-all
+                      ${(form.formState.errors.password || form.formState.errors.root) && 'bg-red-100 border-red-500 !outline-red-500 hover:border-red-500'}
                       `}
                       {...field}
                     />
@@ -109,32 +114,26 @@ export const LoginForm = () => {
             )}
           />
         </div>
-
-        {errorMessage && (
-          <>
-            <div className="flex justify-start items-center gap-2 mt-2">
-              <AlertIcon />
-              <p className="text-sm text-red-500">{errorMessage}</p>
-            </div>
-          </>
+        {form.formState.errors.root && (
+          <div className="text-red-500 text-sm mt-4">
+            {form.formState.errors.root.message}
+          </div>
         )}
-        <LoginButton />
+        {successMessage && (
+          <p className="flex items-center gap-2 text-emerald-600 p-2 rounded w-fit bg-emerald-100 text-sm mt-6 text-left">{successMessage}
+          <LoaderCircle size={17} className="animate-spin" />
+          </p>
+        )}
+        <Button
+          disabled={isLoading}
+          className="bg-moon-500 text-base h-12 rounded-xl w-full text-white hover:bg-moon-600 mt-8 flex items-center gap-2"
+          size="lg"
+          type="submit"
+        >
+          Login
+          {isLoading && (<LoaderCircle size={17} className="animate-spin" />)}
+        </Button>
       </form>
     </Form>
   )
-}
-
-function LoginButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <Button
-      disabled={pending}
-      className="bg-moon-500 text-base h-12 rounded-[0.5rem] w-full text-white hover:bg-moon-600 mt-8"
-      size="lg"
-      type="submit"
-    >
-      Login
-    </Button>
-  );
 }

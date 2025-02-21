@@ -123,7 +123,7 @@ export const AddToCart = ({
       }
 
       <div className="flex justify-between items-center mt-4 mx-auto gap-x-4">
-        <div className="border w-fit h-12 flex rounded-[0.5rem] py-2 items-center">
+        <div className="border w-fit h-12 flex rounded-xl py-2 items-center">
           <button
             onClick={() => onQuantityChange(-1)}
             className="mx-2 p-1 hover:bg-zinc-100 rounded transition-all">
@@ -139,7 +139,7 @@ export const AddToCart = ({
           </button>
         </div>
         <Button
-          className="bg-moon-500 h-12 w-full block text-base rounded-[0.5rem] text-white hover:bg-moon-600 md:max-w-full px-8" variant="default" size="lg"
+          className="bg-moon-500 h-12 w-full block text-base rounded-xl text-white hover:bg-moon-600 md:max-w-full px-8" variant="default" size="lg"
           onClick={() => addToCart(product.category, number || 0)}
         >
           Add to cart

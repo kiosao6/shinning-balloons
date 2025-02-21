@@ -5,7 +5,6 @@ import {z} from "zod";
 import prisma from './lib/prisma';
 import bcryptjs from 'bcryptjs';
 import Github from 'next-auth/providers/github'
- 
 export const authConfig = {
   pages: {
     signIn: '/login',

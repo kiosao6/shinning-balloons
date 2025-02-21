@@ -13,21 +13,18 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import Image from "next/image"
-import { Button } from "@/components/ui/button";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useCartStore } from "@/store/cart-store";
 import { hasCookie, setCookie } from "cookies-next";
 import { EmptyCart } from "./EmptyCart";
+import { CallToAction } from "../ui/CallToAction";
 
 
 export function CartPopover() {
 
   const pathName = usePathname();
-  const router = useRouter();
-
   const cart = useCartStore(state => state.cart);
   const deleteProduct = useCartStore(state => state.deleteProduct)
   const [isLoaded, setIsLoaded] = React.useState(false);
@@ -46,20 +43,22 @@ export function CartPopover() {
   });
 
   const getCheckoutStep = () => {
-    if(hasCookie("shippingAddress") && !hasCookie("paymentMethod") ) {
+    if (hasCookie("shippingAddress") && !hasCookie("paymentMethod")) {
       return "payment"
     }
-    if(hasCookie("shippingAddress") && hasCookie("paymentMethod")) {
+    if (hasCookie("shippingAddress") && hasCookie("paymentMethod")) {
       return "review"
     }
-  
+
     return "shipping"
   }
 
   const placeOrder = () => {
     setCookie("productIds", JSON.stringify(productsIds))
+    if (hasCookie("shippingMethod")) {
+      return
+    }
     setCookie("shippingMethod", "free")
-    router.push(`/checkout?step=${getCheckoutStep()}`)
   }
 
   React.useEffect(() => {
@@ -71,17 +70,17 @@ export function CartPopover() {
     <NavigationMenu className={`${(pathName === '/checkout') && 'hidden'}`}>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="text-sm font-normal h-fit">Cart {isLoaded && `(${cart.length})`}</NavigationMenuTrigger>
+          <NavigationMenuTrigger className="text-base font-normal">Cart {isLoaded && `(${cart.length})`}</NavigationMenuTrigger>
 
           <NavigationMenuContent className="bg-white">
-            <div className="bg-white p-8 md:w-[400px] z-50 lg:w-[420px]">
+            <div className="bg-white p-8 md:w-[400px] z-50 lg:w-[430px]">
               {
                 (cart.length === 0) ? (
                   <EmptyCart />
                 ) : (
                   <>
-                    <p className="text-lg w-full font-medium text-center pb-1">Cart</p>
-                    <p className="mb-8 text-xs text-center text-base-heading/70">This is a quick preview of your cart. Visit your cart page to edit your products and get more information about payment.</p>
+                    <p className="text-lg lg:text-2xl w-full font-semibold text-center pb-1 lg:pb-2">Cart</p>
+                    <p className="mb-8 text-xs text-center text-neutral-500">This is a quick preview of your cart. Visit your cart page to edit your products and get more information about payment.</p>
                     {
                       isLoaded && (
                         <div className="space-y-4 overflow-auto max-h-56 no-scrollbar">
@@ -93,24 +92,24 @@ export function CartPopover() {
                                     <Image
                                       src={`/colors/${product.slug.toLowerCase()}.png`}
                                       alt={`${product.title} Latex Balloon`}
-                                      width={80}
-                                      height={80}
+                                      width={70}
+                                      height={70}
                                       quality={100}
-                                      className="rounded aspect-square w-fit h-fit border hover:shadow-sm transition-all"
+                                      className="rounded-xl aspect-square w-fit lg:w-28 h-fit border hover:shadow-sm transition-all"
                                     />
                                   </Link>
                                   <div className="space-y-1 w-36">
                                     <Link
                                       href={`/shop/${product.category.toLowerCase()}/${product.slug.toLowerCase()}`}
-                                      className="text-sm text-base-heading leading-5 hover:underline transition-all">{`${product.title}`}</Link>
+                                      className="text-sm text-base-heading leading-5 block w-fit hover:underline transition-all">{`${product.title}`}</Link>
 
                                     {
                                       (product?.number || product.number == 0) && (
-                                        <p className="text-base-heading/70 text-xs">Number: {product.number}</p>
+                                        <p className="text-neutral-500 text-xs">Number: {product.number}</p>
                                       )
                                     }
 
-                                    <p className="text-base-heading/70 text-xs">Quantity: {product.quantity}</p>
+                                    <p className="text-neutral-500 text-xs">Quantity: {product.quantity}</p>
 
                                     {
                                       (product?.number || product.number == 0) && (
@@ -160,26 +159,12 @@ export function CartPopover() {
                     <div className="flex justify-between items-center mb-1">
                       <div className="flex items-center gap-1 font-medium">
                         <p className="text-base">Subtotal</p>
-                        <p className="text-xs text-base-heading/70 font-normal">(excl. taxes)</p>
+                        <p className="text-xs text-neutral-500 font-normal">(excl. taxes)</p>
                       </div>
                       <span className="text-base font-medium">{currencyFormat(subtotal)}</span>
                     </div>
-                    <Button
-                      onClick={placeOrder}
-                      variant="default"
-                      size="lg"
-                      className="bg-moon-500 h-12 w-full block text-sm rounded-[0.5rem] text-white hover:bg-moon-600 md:max-w-full px-8">
-                      Go to checkout
-                      {/* <Link href="/checkout" className="text-sm">Go to checkout</Link> */}
-                    </Button>
-
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      className="h-12 w-full px-0 border block text-base rounded-[0.5rem] md:max-w-full hover:border-zinc-400">
-
-                      <Link href="/cart" className="text-sm w-full h-full flex justify-center items-center">View Cart</Link>
-                    </Button>
+                    <CallToAction action={placeOrder} href={`/checkout?step=${getCheckoutStep()}`} text="Go to checkout" className="md:w-auto text-sm" />
+                    <CallToAction href="/cart" variant="outline" text="View cart" className="md:w-auto text-sm" />
                   </div>
                 )
               }

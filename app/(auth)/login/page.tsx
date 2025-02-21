@@ -25,7 +25,7 @@ export default async function SignInPage() {
           <p className={`${styles.line} text-xs font-medium overflow-hidden w-full text-center mx-auto`}>OR</p>
           <div className="mt-6 w-full">
             <LoginForm />
-            <p className="mx-auto text-center mt-6 text-sm text-base-heading/70">Don&#39;t have an account? <Link className="underline text-base-heading" href="/register">Create an account</Link> </p>
+            <p className="mx-auto text-center mt-6 text-sm text-base-heading/70">Don&#39;t have an account? <Link className="underline underline-offset-1 text-base-heading" href="/register">Create an account</Link> </p>
           </div>
         </div>
 

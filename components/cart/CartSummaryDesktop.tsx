@@ -1,10 +1,9 @@
 'use client'
 
-import { hasCookie, setCookie } from 'cookies-next';
+import { getCookie, hasCookie, setCookie } from 'cookies-next';
 import { cn, currencyFormat } from "@/lib/utils";
 import { useState } from "react";
-import { Button } from "@/components/index";
-import Link from "next/link";
+import { CallToAction } from "@/components/index";
 import { useCartStore } from '@/store/cart-store';
 import { useRouter } from 'next/navigation';
 
@@ -40,37 +39,39 @@ export const CartSummaryDesktop = ({
     }
   });
 
-  const [selected, setSelected] = useState<string>("free");
-  const [shippingAmount, setShippingAmount] = useState<number>(0);
-  
+  const currentCookie = getCookie("shippingMethod")
+  const shippingAmountOnLoad = currentCookie === "express" ? 15 : 0
+  const [shippingAmount, setShippingAmount] = useState<number>(shippingAmountOnLoad);
+  const [selected, setSelected] = useState(currentCookie || "free");
+
   
   const placeOrder = () => {
     setCookie("productIds", JSON.stringify(productsIds))
-    setCookie("shippingMethod", selected)
-    router.push(`/checkout?step=${getCheckoutStep()}`)
   }
   
   const setFreeShipping = () => {
+    setCookie("shippingMethod", "free");
     setSelected("free");
     setShippingAmount(0);
   }
 
   const setExpressShipping = () => {
+    setCookie("shippingMethod", "express");
     setSelected("express");
     setShippingAmount(15);
   }
 
   return (
-    <div className={cn("border p-6 mt-0 lg:min-w-[380px] hidden lg:block rounded-xl", className)}>
+    <div className={cn("border p-6 mt-0 lg:min-w-[380px] lg:block rounded-xl lg:ml-8", className)}>
       <p className="mb-4 text-xl font-medium">Cart summary</p>
 
-      <div className={`flex mb-4 items-center ps-4 border border-zinc-200 rounded-[0.5rem] hover:border-zinc-400 transition-all [&>*]:cursor-pointer ${selected === "free" && 'bg-zinc-50 !border-zinc-400'}`}>
-        <input defaultChecked onClick={setFreeShipping} id="bordered-radio-one" type="radio" value="" name="bordered-radios" className="h-4 text-zinc-600 bg-gray-100 border-gray-300 accent-zinc-600" />
+      <div className={`flex mb-4 items-center ps-4 border border-zinc-200 rounded-xl hover:border-zinc-400 transition-all [&>*]:cursor-pointer ${selected === "free" && 'bg-zinc-50 !border-zinc-400'}`}>
+        <input onClick={setFreeShipping} defaultChecked={currentCookie === "free" || !currentCookie}  id="bordered-radio-one" type="radio" value="" name="bordered-radios" className="h-4 text-zinc-600 bg-gray-100 border-gray-300 accent-zinc-600" />
         <label onClick={setFreeShipping} htmlFor="bordered-radio-one" className="w-full py-4 ps-2 text-sm font-medium text-gray-900 dark:text-gray-300">Free Shipping</label>
       </div>
 
-      <div className={`flex items-center ps-4 border border-zinc-200 rounded-[0.5rem] hover:border-zinc-400 transition-all [&>*]:cursor-pointer ${selected === "express" && 'bg-zinc-50 !border-zinc-400'}`}>
-        <input onClick={setExpressShipping} id="bordered-radio-two" type="radio" value="" name="bordered-radios" className="h-4 text-blue-600 bg-gray-100 border-gray-300 accent-zinc-600" />
+      <div className={`flex items-center ps-4 border border-zinc-200 rounded-xl hover:border-zinc-400 transition-all [&>*]:cursor-pointer ${selected === "express" && 'bg-zinc-50 !border-zinc-400'}`}>
+        <input onClick={setExpressShipping} defaultChecked={currentCookie === "express"}  id="bordered-radio-two" type="radio" value="" name="bordered-radios" className="h-4 text-blue-600 bg-gray-100 border-gray-300 accent-zinc-600" />
         <label onClick={setExpressShipping} htmlFor="bordered-radio-two" className="w-full py-4 ps-2 text-sm font-medium text-gray-900 dark:text-gray-300">Express Shipping</label>
         <label onClick={setExpressShipping} htmlFor="bordered-radio-two" className="pr-4 text-sm">{`${currencyFormat(15)}`}</label>
       </div>
@@ -84,19 +85,8 @@ export const CartSummaryDesktop = ({
       </div>
 
       <div className="space-y-4">
-        <Button
-          onClick={placeOrder}
-          variant="default"
-          size="lg"
-          className="bg-moon-500 px-0 h-12 w-full block text-sm rounded-[0.5rem] text-white hover:bg-moon-600 md:max-w-full">
-          Go to checkout
-        </Button>
-        <Button
-          variant="outline"
-          size="lg"
-          className="h-12 px-0 w-full border block text-base rounded-[0.5rem] md:max-w-full hover:border-zinc-400">
-          <Link href="/shop" className="text-sm w-full h-full flex items-center justify-center">Continue shopping</Link>
-        </Button>
+        <CallToAction action={placeOrder} text='Go to checkout' className='text-sm md:w-auto' href={`/checkout?step=${getCheckoutStep()}`} />
+        <CallToAction variant='outline' text='Continue shopping' className='text-sm md:w-auto' href='/shop'/>
       </div>
 
     </div>

@@ -7,17 +7,14 @@ import Link from "next/link"
 
 export const LogoHeader = () => {
 
-  const toggleMenu = useStore((state) => state.toggleMenu);
   const isMenuOpen = useStore((state => state.isMenuOpen));
+  const toggleMenu = useStore(state => state.toggleMenu)
+  
 
   const onClick = () => {
     if(isMenuOpen) {
-      toggleMenu();
-      document.body.classList.remove('overflow-hidden');
-      document.querySelector('main')?.classList.remove('opacity-0');
-      document.querySelector('footer')?.classList.remove('opacity-0');
+      toggleMenu()
     }
-
   }
 
   return (

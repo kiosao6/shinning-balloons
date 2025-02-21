@@ -1,19 +1,18 @@
 "use client";
 
 import { Drawer } from "vaul";
-import { Button, EmptyCart } from "@/components/index";
+import { CallToAction, EmptyCart } from "@/components/index";
 import { currencyFormat } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 import { useCartStore } from "@/store/cart-store";
 import { useEffect, useState } from "react";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { hasCookie, setCookie } from "cookies-next";
 import { useStore } from "@/store/ui-store";
 
 
 export function CartDrawerMobile() {
-  const router = useRouter();
   const cart = useCartStore(state => state.cart);
   const isMenuOpen = useStore(state => state.isMenuOpen)
   const toggleMenu = useStore(state => state.toggleMenu)
@@ -35,10 +34,7 @@ export function CartDrawerMobile() {
 
   const closeDrawer = () => {
     if (isMenuOpen) {
-      toggleMenu();
-      document.body.classList.toggle('overflow-hidden');
-      document.querySelector('main')?.classList.toggle('opacity-0');
-      document.querySelector('footer')?.classList.toggle('opacity-0');
+      toggleMenu()
     }
     setIsOpen(!isOpen);
 
@@ -57,8 +53,10 @@ export function CartDrawerMobile() {
   const placeOrder = () => {
     closeDrawer()
     setCookie("productIds", JSON.stringify(productsIds))
+    if (hasCookie("shippingMethod")) {
+      return
+    }
     setCookie("shippingMethod", "free")
-    router.push(`/checkout?step=${getCheckoutStep()}`)
   }
 
 
@@ -74,15 +72,15 @@ export function CartDrawerMobile() {
       </Drawer.Trigger>
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 bg-black/40 z-[51]" />
-        <Drawer.Content className="bg-white flex flex-col rounded-t-[10px] z-[52] h-[70%] mt-24 fixed bottom-0 left-0 right-0">
-          <div className="mx-auto mt-4 w-12 h-1.5 flex-shrink-0 rounded-full bg-zinc-300" />
+        <Drawer.Content className="bg-white flex flex-col rounded-t-[10px] z-[52] h-[73%] mt-24 fixed bottom-0 left-0 right-0">
+          <div className="mx-auto mt-4 w-12 h-1 flex-shrink-0 rounded-full bg-zinc-300" />
           {
             cart.length === 0 ? (
-              <EmptyCart />
+              <EmptyCart closeModal={closeDrawer} className="mt-8" />
             ) : (
-              <div className="bg-white mx-auto p-6 md:w-[400px] z-50 lg:w-[380px]">
-                <p className="text-lg w-full font-medium text-center pb-1">Cart</p>
-                <p className="mb-8 text-xs text-center text-base-heading/60">This is a quick preview of your cart. Visit your cart page to edit your products and get more information about payment.</p>
+              <div className="bg-white mx-auto p-6 md:w-[400px] z-50 lg:w-[380px] mt-0">
+                <p className="text-xl w-full font-medium text-center pb-1">Cart</p>
+                <p className="mb-8 text-xs text-center text-neutral-500">This is a quick preview of your cart. Visit your cart page to edit your products and get more information about payment.</p>
 
                 {
                   isLoaded && (
@@ -98,13 +96,13 @@ export function CartDrawerMobile() {
                                   width={90}
                                   height={90}
                                   quality={100}
-                                  className="rounded aspect-square w-26 h-fit border hover:shadow-sm  transition-all"
+                                  className="rounded-xl aspect-square w-26 h-fit border hover:shadow-sm  transition-all"
                                 />
                               </Link>
                               <div className="space-y-1 w-36">
                                 <Link
                                   href={`/shop/${product.category}/${product.slug}`}
-                                  className="text-sm text-base-heading leading-5 hover:underline transition-all">{`${product.title}`}</Link>
+                                  className="text-sm block text-base-heading leading-5 hover:underline transition-all">{`${product.title}`}</Link>
 
                                 {
                                   (product.number || product.number === 0) && (
@@ -137,23 +135,8 @@ export function CartDrawerMobile() {
                     </div>
                     <span className="text-base font-medium">{currencyFormat(subtotal)}</span>
                   </div>
-                  <Button
-                    onClick={placeOrder}
-                    variant="default"
-                    size="lg"
-                    className="bg-moon-500  h-12 w-full block text-sm rounded-[0.5rem] text-white hover:bg-moon-600 md:max-w-full px-8">
-                    Go to checkout
-                    {/* <Link href="/checkout" className="text-sm">Go to checkout</Link> */}
-                  </Button>
-
-                  <Button
-                    onClick={closeDrawer}
-                    variant="outline"
-                    size="lg"
-                    className="h-12 w-full border block text-base rounded-[0.5rem] md:max-w-full px-8 hover:border-zinc-400">
-
-                    <Link href="/cart" className="text-sm w-full h-full flex justify-center items-center">View Cart</Link>
-                  </Button>
+                  <CallToAction action={placeOrder} text="Go to checkout" href={`/checkout?step=${getCheckoutStep()}`} />
+                  <CallToAction action={closeDrawer} variant="outline" text="View cart" href="/cart" />
                 </div>
 
 

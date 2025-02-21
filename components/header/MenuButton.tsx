@@ -10,20 +10,11 @@ export const MenuButton = () => {
   // Global state management
   const isMenuOpen = useStore(state => state.isMenuOpen);
   const toggleMenu = useStore(state => state.toggleMenu);
-
-
-  const onClick = () => {
-    toggleMenu();
-    document.body.classList.toggle('overflow-hidden');
-    document.querySelector('main')?.classList.toggle('opacity-0');
-    document.querySelector('footer')?.classList.toggle('opacity-0');
-  }
-
   return (
     <>
       <button
         aria-label='Menu button'
-        onClick={() => onClick()}
+        onClick={() => toggleMenu()}
         className={`${styles.burger} relative mr-[33px] w-8 h-8 flex items-center justify-center md:hidden z-30`}
       >
         <MenuIcon data-hide={isMenuOpen} />

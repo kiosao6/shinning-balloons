@@ -33,13 +33,13 @@ export const SectionTwo = () => {
 
           {
             categories.map((category, index) => (
-              <Link key={index} href={`/shop/${category.slug}`} className="w-fit z-10 rounded-xl mx-auto relative bg-black/50 flex flex-col items-center justify-center group transition-all duration-300 lg:hover:scale-[1.02]">
+              <Link key={index} href={`/shop/${category.slug}`} className="w-fit z-10 rounded-2xl mx-auto relative bg-black/50 flex flex-col items-center justify-center group transition-all duration-300 lg:hover:scale-[1.02]">
                 <Image
                   src={category.image}
                   width={500}
                   height={500}
                   alt={category.title}
-                  className="w-full mix-blend-overlay aspect-[1/1] rounded-xl max-w-sm mx-auto"
+                  className="w-full mix-blend-overlay rounded-2xl aspect-[1/1] max-w-sm mx-auto"
                 />
                 <h2
                   className="text-white h-fit text-3xl font-medium absolute text-center group-hover:underline">

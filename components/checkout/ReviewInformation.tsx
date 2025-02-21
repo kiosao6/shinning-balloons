@@ -35,8 +35,8 @@ export const ReviewInformation = ({
   const onSubmit = async() => {
     setIsLoading(true)
     const order = await placeOrder(products, shipping, address );
-    clearCart();
-    router.push(`/order/${order}`)
+    // clearCart();
+    router.push(`/orders/${order}`)
   };
 
   return (

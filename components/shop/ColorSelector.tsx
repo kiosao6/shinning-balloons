@@ -53,15 +53,15 @@ export function ColorSelector() {
 
   return (
     <Select open={isOpen} onOpenChange={() => setIsOpen} onValueChange={handleColorchange} defaultValue={color as string || undefined}>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-[180px] h-12">
         <SelectValue placeholder="Color" />
       </SelectTrigger>
-      <SelectContent className="max-w-[180px] min-w-[0px]" onChange={event => event.stopPropagation()} onClick={event => event.stopPropagation()}>
-        <SelectGroup onChange={event => event.stopPropagation()} onClick={event => event.stopPropagation()}>
+      <SelectContent className="max-w-[180px] min-w-[0px]">
+        <SelectGroup>
           {
             colors.map((color, i) => (
               <SelectItem
-                onClick={event => event.stopPropagation()}
+                className="py-3"
                 key={i}
                 value={color.value}>{color.name}
               </SelectItem>

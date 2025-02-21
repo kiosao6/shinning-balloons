@@ -24,7 +24,7 @@ export const registerUser = async(name: string, email: string, password: string)
     {
       return {
         ok: false,
-        message: 'This email address is already taken. Please try another one'
+        message: 'It looks like this email is already registered. Try logging in or use a different email to sign up.'
       }
     }
 

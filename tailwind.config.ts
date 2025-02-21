@@ -31,7 +31,7 @@ const config = {
           '800': '#842234',
           '900': '#792235',
           '950': '#430e18',
-      },
+        },
         'red-danger': '#f7345e',
         'red-danger-bg': '#ffeaef',
         'base-heading': "#040415",

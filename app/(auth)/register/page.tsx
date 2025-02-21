@@ -12,7 +12,7 @@ export default function SignInPage() {
           <h1 className="text-4xl tracking-tight mb-2 font-bold">Create an account</h1>
           <p className="mb-8 text-base-heading/70 text-sm">Describe yourself as clearly so there are no mistakes</p>
 
-          <GithubButton />
+          <GithubButton text="Sign up with GitHub" />
           <p className={`${styles.line} text-xs font-medium overflow-hidden w-full text-center mx-auto`}>OR</p>
           <div className="mt-6 w-full">
             <RegisterForm />

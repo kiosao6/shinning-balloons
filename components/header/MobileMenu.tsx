@@ -3,9 +3,8 @@ import { IoChevronForwardOutline } from "react-icons/io5";
 import { useStore } from "@/store/ui-store"
 import Link from "next/link"
 import styles from "./MenuItem.module.css"
-import { Button } from "@/components/index";
+import {  CallToAction, DropdownUser } from "@/components/index";
 import { useSession } from "next-auth/react";
-import { LogoutButton } from "./LogoutButton";
 
 const links = [
   {
@@ -23,16 +22,13 @@ const links = [
 ]
 
 export const MobileMenu = () => {
-  const toggleMenu = useStore(state => state.toggleMenu);
   const { data: session } = useSession();
   const isAuthenticated = !!session?.user;
+  const toggleMenu = useStore(state => state.toggleMenu)
+  
 
   const onClick = () => {
-    toggleMenu();
-    document.body.classList.toggle('overflow-hidden');
-    document.querySelector('main')?.classList.toggle('opacity-0');
-    document.querySelector('footer')?.classList.toggle('opacity-0');
-
+    toggleMenu()
   }
 
   return (
@@ -50,11 +46,6 @@ export const MobileMenu = () => {
 
             ))
           }
-          {
-            isAuthenticated && (
-              <LogoutButton />
-            )
-          }
 
           {
             !isAuthenticated && (
@@ -65,18 +56,20 @@ export const MobileMenu = () => {
             )
           }
 
-          <Button
-            onClick={onClick}
-            className={`${styles.link} bg-moon-500 block text-base rounded-[0.5rem] text-white hover:bg-moon-600 md:max-w-64 p-0 mt-12`} variant="default" size="lg">
-            <Link className="w-full h-full flex justify-center items-center" href="/shop">Shop now</Link>
-          </Button>
-
+          <CallToAction action={onClick} className="mt-12 lg:mx-auto"/>
 
         </div>
-
-        <p className={`${styles.link} text-sm text-base-heading py-8`}>
-          Developed by <a target="blank" className="underline" href="#">Gabriel Maestre</a> using Next.Js App Rounter syntax.
-        </p>
+        <div>
+          {
+            !session ? (
+              <p className={`${styles.link} text-sm text-base-heading py-8`}>
+                Developed by <a target="blank" className="underline" href="#">Gabriel Maestre</a> using Next.Js App Rounter syntax.
+              </p>
+            ) : (
+              <DropdownUser />
+            )
+          }
+        </div>
       </nav>
     </div>
   )

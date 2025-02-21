@@ -1,5 +1,4 @@
-import { Button } from "@/components/index";
-import Link from "next/link";
+import { CallToAction } from "@/components/index";
 
 export default function AboutPage() {
   return (
@@ -12,10 +11,7 @@ export default function AboutPage() {
 
           <p className="text-base text-base-heading/70 leading-relaxed mx-auto md:text-lg">We understand the importance of timely delivery, which is why we offer two convenient shipping options. Choose our standard shipping for delivery within 2-3 days, or opt for our express shipping for next-day delivery. With Shinning Balloons, your celebrations are guaranteed to shine brighter than ever. Shop with us today and let your imagination take flight!</p>
 
-          <Button className="bg-moon-500 block text-base rounded-[0.5rem] text-white hover:bg-moon-600 md:max-w-64 p-0" variant="default" size="lg">
-            <Link className="w-full h-full flex justify-center items-center" href="/shop">Shop now</Link>
-          </Button>
-
+          <CallToAction />
 
         </div>
       </section>

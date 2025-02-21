@@ -21,6 +21,7 @@ import { useState } from "react";
 import { PasswordIcon } from "@/components/index";
 import { registerUser } from "@/actions";
 import { login } from "@/actions/auth/login";
+import { LoaderCircle } from "lucide-react";
 
 
 
@@ -28,6 +29,7 @@ import { login } from "@/actions/auth/login";
 export const RegisterForm = () => {
 
   const [showPassword, setShowPassword] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -42,6 +44,7 @@ export const RegisterForm = () => {
   })
 
   const onSubmit = async(values: z.infer<typeof RegisterSchema>) => {
+    setIsLoading(true);
     const { ok, message } = await registerUser(values.name, values.email, values.password);
     if(!ok)
     {
@@ -49,8 +52,7 @@ export const RegisterForm = () => {
         type: 'manual',
         message
       })
-
-      console.log(message);
+      setIsLoading(false);
       return
     }
     await login(values.email.toLowerCase(), values.password);
@@ -72,8 +74,8 @@ export const RegisterForm = () => {
                 <FormControl>
                   <Input
                     placeholder="Enter your full name"
-                    className={`border border-zinc-300 pl-4 rounded-[0.5rem] hover:border-zinc-400 transition-all
-                    ${form.formState.errors.name  && 'bg-red-danger-bg/40 border-red-danger !outline-red-danger hover:border-red-danger'}
+                    className={`border border-zinc-300 pl-4 rounded-xl hover:border-zinc-400 transition-all
+                    ${form.formState.errors.name  && 'bg-red-100 border-red-500 !outline-red-500 hover:border-red-500'}
                     `}
                     {...field}
                   />
@@ -94,8 +96,8 @@ export const RegisterForm = () => {
                 <FormControl>
                   <Input
                     placeholder="Enter your email"
-                    className={`border border-zinc-300 pl-4 rounded-[0.5rem] hover:border-zinc-400 transition-all
-                    ${(form.formState.errors.email) && 'bg-red-danger-bg/40 border-red-danger !outline-red-danger hover:border-red-danger'}
+                    className={`border border-zinc-300 pl-4 rounded-xl hover:border-zinc-400 transition-all
+                    ${(form.formState.errors.email) && 'bg-red-100 border-red-500 !outline-red-500 hover:border-red-500'}
                     `}
                     {...field}
                   />
@@ -119,8 +121,8 @@ export const RegisterForm = () => {
                     <Input
                       type={showPassword ? 'text' : 'password'}
                       placeholder="Create a password"
-                      className={`border border-zinc-300 pl-4 rounded-[0.5rem] hover:border-zinc-400 transition-all
-                      ${form.formState.errors.password && 'bg-red-danger-bg/40 border-red-danger !outline-red-danger hover:border-red-danger'}
+                      className={`border border-zinc-300 pl-4 rounded-xl hover:border-zinc-400 transition-all
+                      ${form.formState.errors.password && 'bg-red-100 border-red-500 !outline-red-500 hover:border-red-500'}
                       `}
                       {...field}
                     />
@@ -134,11 +136,13 @@ export const RegisterForm = () => {
         </div>
 
         <Button
-          className="bg-moon-500 text-base h-12 rounded-[0.5rem] w-full text-white hover:bg-moon-600 mt-8"
+          disabled={isLoading}
+          className="bg-moon-500 text-base h-12 rounded-xl w-full text-white hover:bg-moon-600 mt-8 flex items-center gap-2"
           size="lg"
           type="submit"
         >
           Create account
+          { isLoading && (<LoaderCircle size={18} className="animate-spin" />)}
         </Button>
       </form>
     </Form>
