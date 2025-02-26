@@ -1,8 +1,9 @@
 'use client'
 
 import { setCookies } from "@/actions";
-import { Button, CheckIcon, StepIndicator } from "@/components/index"
+import { Button, StepIndicator } from "@/components/index"
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { HiMiniCheckCircle } from "react-icons/hi2";
 
 
 
@@ -23,7 +24,7 @@ export const PaymentInformation = () => {
   };
 
   return (
-    <div className={`border border-zinc-300 p-6 rounded-xl ${isOpen && 'border-zinc-400'}`}>
+    <div className={`border border-zinc-300 p-6 rounded-xl ${isOpen && 'border-zinc-400'} ${( !isOpen) && ' border-emerald-500 bg-emerald-50'}`}>
       <div className="md:flex ju stify-between" >
         <div className="md:flex gap-8 w-full">
           <StepIndicator step={3} />
@@ -32,7 +33,7 @@ export const PaymentInformation = () => {
               <span className="uppercase text-base font-medium">Payment information</span>
               {
                 !isOpen && (
-                  <CheckIcon />
+                  <HiMiniCheckCircle className="size-5" color="#2F303C" />
                 )
               }
             </div>

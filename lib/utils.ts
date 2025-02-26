@@ -1,4 +1,3 @@
-import { useStore } from "@/store/ui-store"
 import { type ClassValue, clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
@@ -15,6 +14,14 @@ export const currencyFormat = (value: number) => {
     // maximumSignificantDigits: 2
   }).format(value)
 }
+export const formatDate = (date: Date) => {
+  return date.toLocaleDateString("en-US", {
+    weekday: "short",  // "Mon"
+    day: "2-digit",    // "24"
+    month: "long",     // "June"
+    year: "numeric"    // "2023"
+  });
+};
 
 export const generatePaginationNumbers = (currentPage: number, totalPages: number) => {
 

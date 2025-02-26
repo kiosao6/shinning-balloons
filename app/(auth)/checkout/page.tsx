@@ -1,6 +1,6 @@
 import { getCookies, getProductById } from "@/actions";
 import { auth } from "@/auth.config";
-import { BreadCrumb, LoginInformation, ShippingAddress, PaymentInformation, ReviewInformation, OrderReview } from "@/components/index";
+import { BreadCrumb, LoginInformation, ShippingAddress, PaymentInformation, ReviewInformation, OrderReview, Steps } from "@/components/index";
 import { notFound } from "next/navigation";
 
 
@@ -75,7 +75,7 @@ export default async function CheckoutPage() {
       <section className="mt-10 mb-16 max-w-6xl mx-auto">
         <BreadCrumb links={links} />
         <h1 className="text-4xl mt-12 mb-12 font-bold tracking-tight lg:text-5xl">Checkout</h1>
-
+        <Steps />
 
         <div className="justify-between lg:flex lg:flex-row-reverse">
           <OrderReview totals={totals} products={finalProducts} />

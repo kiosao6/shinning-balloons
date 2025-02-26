@@ -65,7 +65,7 @@ export const ShippingForm = ({addressCookie}: Props) => {
                   <Input
                     placeholder="Enter your name"
                     className={`border border-zinc-300 pl-4 rounded-[0.5rem] hover:border-zinc-400 transition-all
-                    ${form.formState.errors.name && 'bg-red-danger-bg/40 border-red-danger !outline-red-danger hover:border-red-danger'}
+                    ${form.formState.errors.name && 'bg-red-danger-bg/40 border-red-500 !outline-red-500 hover:border-red-500'}
                     `}
                     {...field}
                   />
@@ -107,7 +107,7 @@ export const ShippingForm = ({addressCookie}: Props) => {
                   <Input
                     placeholder="Enter your address"
                     className={`border border-zinc-300 pl-4 rounded-[0.5rem] hover:border-zinc-400 transition-all
-                    ${form.formState.errors.address && 'bg-red-danger-bg/40 border-red-danger !outline-red-danger hover:border-red-danger'}
+                    ${form.formState.errors.address && 'bg-red-danger-bg/40 border-red-500 !outline-red-500 hover:border-red-500'}
                     `}
                     {...field}
                   />
@@ -129,7 +129,7 @@ export const ShippingForm = ({addressCookie}: Props) => {
                   <Input
                     placeholder="Enter your city"
                     className={`border border-zinc-300 pl-4 rounded-[0.5rem] hover:border-zinc-400 transition-all
-                    ${form.formState.errors.city && 'bg-red-danger-bg/40 border-red-danger !outline-red-danger hover:border-red-danger'}
+                    ${form.formState.errors.city && 'bg-red-danger-bg/40 border-red-500 !outline-red-500 hover:border-red-500'}
                     `}
                     {...field}
                   />
@@ -151,7 +151,7 @@ export const ShippingForm = ({addressCookie}: Props) => {
                   <Input
                     placeholder="Enter your postal code"
                     className={`border border-zinc-300 pl-4 rounded-[0.5rem] hover:border-zinc-400 transition-all
-                    ${form.formState.errors.postalCode && 'bg-red-danger-bg/40 border-red-danger !outline-red-danger hover:border-red-danger'}
+                    ${form.formState.errors.postalCode && 'bg-red-danger-bg/40 border-red-500 !outline-red-500 hover:border-red-500'}
                     `}
                     {...field}
                   />
@@ -173,7 +173,7 @@ export const ShippingForm = ({addressCookie}: Props) => {
                   <Input
                     placeholder="Enter your state or province"
                     className={`border border-zinc-300 pl-4 rounded-[0.5rem] hover:border-zinc-400 transition-all
-                    ${form.formState.errors.state && 'bg-red-danger-bg/40 border-red-danger !outline-red-danger hover:border-red-danger'}
+                    ${form.formState.errors.state && 'bg-red-danger-bg/40 border-red-500 !outline-red-500 hover:border-red-500'}
                     `}
                     {...field}
                   />
@@ -215,7 +215,7 @@ export const ShippingForm = ({addressCookie}: Props) => {
                   <Input
                     placeholder="Enter your phone"
                     className={`border border-zinc-300 pl-4 rounded-[0.5rem] hover:border-zinc-400 transition-all
-                    ${form.formState.errors.phone && 'bg-red-danger-bg/40 border-red-danger !outline-red-danger hover:border-red-danger'}
+                    ${form.formState.errors.phone && 'bg-red-danger-bg/40 border-red-500 !outline-red-500 hover:border-red-500'}
                     `}
                     {...field}
                   />

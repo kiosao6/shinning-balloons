@@ -26,8 +26,8 @@ interface Props {
 export const OrderReview = ({ products: productsFound, totals }: Props) => {
 
   return (
-    <div className="border p-6 mb-6 lg:mb-0 lg:min-w-[380px] rounded-xl h-fit">
-      <p className="mb-4 text-xl font-medium border-b pb-4">Order review</p>
+    <div className="border border-zinc-300 p-6 mb-6 lg:mb-0 lg:min-w-[380px] rounded-xl h-fit">
+      <p className="mb-4 text-xl font-medium pb-4">Order review:</p>
 
       <div className="space-y-4">
         {
@@ -40,7 +40,7 @@ export const OrderReview = ({ products: productsFound, totals }: Props) => {
                   width={90}
                   height={90}
                   quality={100}
-                  className="rounded-xl aspect-square w-26 h-fit border hover:shadow-sm transition-all"
+                  className="rounded-xl aspect-square w-26 h-fit border transition-all"
                 />
                 <div className="space-y-1 w-36">
                   <p
@@ -54,10 +54,6 @@ export const OrderReview = ({ products: productsFound, totals }: Props) => {
                 </div>
 
                 <div className="pl-8 w-24 flex flex-col items-end">
-                  {/* <p className="text-sm w-fit text-left text-base-heading">{currencyFormat((product.discountedPrice * product.quantity) ?? product.price * product.quantity)}</p>
-                  {product.discountedPrice && (
-                    <p className="text-sm text-left h-fit text-base-heading/40 line-through">{currencyFormat(product.price * product.quantity)}</p>
-                  )} */}
 
                   <p className="text-sm w-fit text-left text-base-heading">{currencyFormat((product.discountedPrice ?? product.price) * product.quantity)}</p>
                   {product.discountedPrice && (

@@ -1,4 +1,5 @@
-import { CheckIcon, StepIndicator } from "@/components/index"
+import { StepIndicator } from "@/components/index"
+import { HiMiniCheckCircle } from "react-icons/hi2";
 
 
 interface Props {
@@ -10,13 +11,13 @@ export const LoginInformation = ({
 }:Props) => {
   
   return (
-    <div className="border border-zinc-300 p-6 rounded-xl">
+    <div className="border border-emerald-500 bg-emerald-50 p-6 rounded-xl">
       <div className="flex gap-8">
         <StepIndicator step={1} />
         <div className="flex flex-col gap-1">
           <div className="flex gap-3 items-center mb-1">
             <span className="uppercase text-base font-medium">Login</span>
-            <CheckIcon />
+            <HiMiniCheckCircle className="size-5" color="#2F303C" />
           </div>
           <div className="md:flex items-center font-semibold gap-x-4 max-w-xs [&>*]:text-sm">
             <p>{name}</p>

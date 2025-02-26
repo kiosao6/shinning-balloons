@@ -32,8 +32,8 @@ export const MobileMenu = () => {
   }
 
   return (
-    <div className="fixed bottom-0 right-0 left-0 top-0 mt-24 bg-white z-20">
-      <nav className="bg-dark px-8 h-full flex flex-col justify-between">
+    <div className="fixed bottom-0 right-0 left-0 top-0 mt-[70px] bg-white z-20 lg:hidden">
+      <nav className="bg-dark px-8 pt-4 h-full flex flex-col justify-between">
         <div className="flex flex-col gap-1">
 
           {
@@ -63,7 +63,7 @@ export const MobileMenu = () => {
           {
             !session ? (
               <p className={`${styles.link} text-sm text-base-heading py-8`}>
-                Developed by <a target="blank" className="underline" href="#">Gabriel Maestre</a> using Next.Js App Rounter syntax.
+                Developed by <a target="blank" className="underline" href="https://www.gabrielmaestre.com">Gabriel Maestre</a> using Next.Js App Rounter syntax.
               </p>
             ) : (
               <DropdownUser />

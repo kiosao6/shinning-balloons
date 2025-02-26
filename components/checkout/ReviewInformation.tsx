@@ -1,14 +1,13 @@
-
-
-
-
 'use client'
 
 import { placeOrder } from '@/actions/place-order';
-import { Button, CheckIcon, StepIndicator } from '@/components/index';
+import { Button, StepIndicator } from '@/components/index';
 import { useCartStore } from '@/store/cart-store';
+import { getCookie } from 'cookies-next';
+import { LoaderCircle } from 'lucide-react';
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState } from 'react';
+import { HiMiniCheckCircle } from 'react-icons/hi2';
 
 
 interface Props {
@@ -26,16 +25,20 @@ export const ReviewInformation = ({
   const router = useRouter();
   const pathName = usePathname();
   const [isLoading, setIsLoading] = useState(false)
-
+  const shippingCookie = getCookie('shippingAddress')
   const isOpen = searchParams.get("step") === "review";
   const onClick = () => {
     router.push(pathName + "?step=review")
   };
 
-  const onSubmit = async() => {
+  const onSubmit = async () => {
     setIsLoading(true)
-    const order = await placeOrder(products, shipping, address );
-    // clearCart();
+    if(!shippingCookie) {
+      setIsLoading(false)
+      return; 
+    }
+    const order = await placeOrder(products, shipping, address);
+    clearCart();
     router.push(`/orders/${order}`)
   };
 
@@ -49,7 +52,7 @@ export const ReviewInformation = ({
               <span className="uppercase text-base font-medium">Review</span>
               {
                 !isOpen && (
-                  <CheckIcon />
+                  <HiMiniCheckCircle className="size-5" color="#2F303C" />
                 )
               }
             </div>
@@ -66,13 +69,14 @@ export const ReviewInformation = ({
             {
               isOpen && (
                 <Button
-                  disabled={isLoading}
+                  disabled={isLoading || !shippingCookie}
                   onClick={onSubmit}
                   className="bg-moon-500 w-fit text-base h-12 rounded-[0.5rem] text-white hover:bg-moon-600 mt-6"
                   size="lg"
                   type="submit"
                 >
-                  Place order
+                  {isLoading ? 'Placing order' : 'Place order'}
+                  {isLoading && (<LoaderCircle size={17} className="animate-spin ml-2" />)}
                 </Button>
               )
             }

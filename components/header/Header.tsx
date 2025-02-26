@@ -5,7 +5,7 @@ import { UserPopover } from "./UserPopover";
 
 export const Header = () => {
   return (
-    <header className="py-4 bg-white border-b px-8 text-base-heading z-50 sticky top-0" >
+    <header className="py-4 flex bg-white border-b px-8 text-base-heading z-50 sticky top-0 h-[70px] lg:h-auto" >
       <div className="flex w-full items-center justify-between gap-x-3 max-w-7xl mx-auto">
         <MenuButton />
         <Link href="/" className="hidden lg:flex items-center justify-center gap-x-4 z-30">

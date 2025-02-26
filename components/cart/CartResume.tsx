@@ -64,8 +64,8 @@ export const CartResume = () => {
             {/* Desktop Design */}
             {
               !isMobile && (
-                <div className="justify-between lg:flex">
-                  <div className="space-y-6 w-fit">
+                <div className="justify-between lg:flex space-y-6 lg:space-y-0">
+                  <div className="space-y-6">
                     <div className="flex text-base-heading/70">
                       <p className="w-96 uppercase text-sm tracking-wider font-medium">Product</p>
                       <p className="w-48 uppercase text-sm tracking-wider font-medium">Quantity</p>
@@ -85,7 +85,7 @@ export const CartResume = () => {
                                 className="rounded-xl aspect-square w-44 h-fit border hover:shadow-sm  transition-all"
                               />
                             </Link>
-                            <div className=" w-full">
+                            <div className="w-full">
                               <div className="flex flex-col gap-1">
                                 <Link
                                   href={`/shop/${product.category.toLowerCase()}`}
@@ -144,7 +144,7 @@ export const CartResume = () => {
                     }
                   </div>
 
-                  <CartSummaryDesktop subtotal={subtotal} />
+                  <CartSummaryDesktop className="max-w-md" subtotal={subtotal} />
 
                 </div>
               )
@@ -168,7 +168,7 @@ export const CartResume = () => {
                               className="rounded-xl aspect-square w-48 h-fit border hover:shadow-sm  transition-all"
                             />
                           </Link>
-                          <div className=" w-full">
+                          <div className="w-full">
 
                             <div className="flex flex-col gap-1">
                               <Link
@@ -219,7 +219,7 @@ export const CartResume = () => {
                       </div>
                     ))
                   }
-                  <CartSummaryDesktop subtotal={subtotal} />
+                  <CartSummaryDesktop className="max-w-md" subtotal={subtotal} />
                 </div>
               )
             }

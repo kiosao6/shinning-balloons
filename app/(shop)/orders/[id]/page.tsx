@@ -1,5 +1,6 @@
 import { getOrder } from "@/actions/getOrder";
-import { BreadCrumb, OrderReview, StepIndicator, CheckIcon } from "@/components/index";
+import { BreadCrumb, OrderReview, StepIndicator } from "@/components/index";
+import { HiMiniCheckCircle } from "react-icons/hi2";
 
 interface Props {
   params: Promise<{
@@ -40,7 +41,6 @@ export default async function OrderPage(props: Props) {
         <BreadCrumb links={links} />
         <div className="my-12 space-y-1">
           <h1 className="text-4xl max-w-3xl font-bold mb-4 tracking-tight lg:text-5xl">Thank you! Your order was successfully placed.</h1>
-          {/* <p>Your order was successfully placed.</p> */}
           <p className="text-base-heading/70">We have sent the order confirmation details to <span className="font-semibold text-base-heading">{email}.</span></p>
           <p className="text-base-heading/70">Order ID: <span className="text-base-heading font-semibold">{params.id}</span></p>
         </div>
@@ -57,7 +57,7 @@ export default async function OrderPage(props: Props) {
                   <div className="flex flex-col gap-1">
                     <div className="flex gap-3 items-center mb-1">
                       <span className="uppercase text-base font-medium">Buyer information</span>
-                      <CheckIcon />
+                      {/* <CheckIcon /> */}
                     </div>
                     <div className="md:flex items-center font-semibold gap-x-4 max-w-xs [&>*]:text-sm">
                       <p>{name}</p>
@@ -78,7 +78,7 @@ export default async function OrderPage(props: Props) {
 
                       <div className="flex gap-3 items-center mb-1">
                         <span className="uppercase text-base font-medium">Shipping Address</span>
-                        <CheckIcon />
+                        {/* <CheckIcon /> */}
 
                       </div>
 
@@ -100,7 +100,7 @@ export default async function OrderPage(props: Props) {
                     <div className="flex flex-col gap-1 w-full">
                       <div className="flex gap-3 items-center mb-1">
                         <span className="uppercase text-base font-medium">Payment information</span>
-                        <CheckIcon />
+                        <HiMiniCheckCircle className="size-5" color="#2F303C" />
                       </div>
                       <div className="flex items-center font-semibold gap-x-6">
                         <p className="text-sm">Visa credit card ending in 9789.</p>

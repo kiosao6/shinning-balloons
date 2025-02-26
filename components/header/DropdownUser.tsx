@@ -20,10 +20,12 @@ import { CartIcon, LogoutIcon } from "./UserPopover"
 import { useRouter } from "next/navigation"
 import { Logout } from "@/actions"
 import { useStore } from "@/store/ui-store"
+import { useSession } from "next-auth/react"
 
 export function DropdownUser() {
   const router = useRouter() 
   const toggleMenu = useStore(state => state.toggleMenu)
+  const { data: session } = useSession();
 
   const onHandleClick = () => {
     toggleMenu()
@@ -48,12 +50,12 @@ export function DropdownUser() {
           </span>
         </div>
         <div className="grid flex-1 text-left text-[15px] leading-tight h-fit">
-          <span className="truncate font-semibold">{'Gabriel Maestre'}</span>
-          <span className="truncate text-[13px] text-neutral-500">{'gabrielmaestre79@gmail.com'}</span>
+          <span className="truncate font-semibold">{session?.user.name}</span>
+          <span className="truncate text-[13px] text-neutral-500">{session?.user.email}</span>
         </div>
         <ChevronsUpDown className="ml-auto size-4" />
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-72 rounded mb-2">
+      <DropdownMenuContent className="w-[calc(100vw-64px)] rounded mb-2">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>

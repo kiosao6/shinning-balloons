@@ -2,9 +2,7 @@ import { getProductBySlug } from "@/actions";
 import { AccordionProduct, AddToCart, BreadCrumb, ProductGridRelated, SaleBadge } from "@/components/index";
 import { currencyFormat } from "@/lib/utils";
 import Image from "next/image";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { TbArrowNarrowLeft } from "react-icons/tb";
 
 
 interface Props {
@@ -12,6 +10,15 @@ interface Props {
     slug: string;
   }>
 }
+
+// export async function generateStaticParams(){
+//   const slugs = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/slugs`).then((res) => res.json())
+
+//   return slugs.map((item: string) => ({
+//     category: 'latex',
+//     slug: item
+//   }))
+// }
 
 
 export default async function ProductPage(props: Props) {
