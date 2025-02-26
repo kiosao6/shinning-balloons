@@ -11,14 +11,14 @@ interface Props {
   }>
 }
 
-// export async function generateStaticParams(){
-//   const slugs = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/slugs`).then((res) => res.json())
+export async function generateStaticParams(){
+  const slugs = await fetch('https://shinning-balloons.vercel.app/api/slugs').then((res) => res.json())
 
-//   return slugs.map((item: string) => ({
-//     category: 'latex',
-//     slug: item
-//   }))
-// }
+  return slugs.map((item: string) => ({
+    category: 'latex',
+    slug: item
+  }))
+}
 
 
 export default async function ProductPage(props: Props) {
