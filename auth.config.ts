@@ -5,6 +5,12 @@ import {z} from "zod";
 import prisma from './lib/prisma';
 import bcryptjs from 'bcryptjs';
 import Github from 'next-auth/providers/github'
+import { Account, Profile, User as NextAuthUser } from 'next-auth';
+interface User {
+  id: string;
+  email: string;
+  name: string;
+}
 export const authConfig = {
   pages: {
     signIn: '/login',
@@ -12,15 +18,47 @@ export const authConfig = {
   },
 
   callbacks: {
-    jwt({ token, user }: { token: any, user: any }) {
+
+    async signIn({user, account, profile}: { user: NextAuthUser | User, account: Account | null, profile?: Profile | null }) {
+      if(account?.provider === 'github') {
+        if(!user.email) return false;
+
+        const existingUser = await prisma.user.findUnique({
+          where: { email: user.email}
+        })
+        const randomPassword = bcryptjs.hashSync("github-auth", 10);
+
+        if(!existingUser){
+          await prisma.user.create({
+            data: {
+              email: user.email,
+              name: user.name || "Usuario de GitHub",
+              password: randomPassword
+            }
+          })
+        }
+      }
+      return true;
+    },
+
+    async jwt({ token, user }: { token: any, user: any }) {
       if(user) {
-        token.data = user;
+        const existingUser = await prisma.user.findUnique({
+          where: { email: user.email }
+        })
+        if(existingUser) {
+          token.id = existingUser.id,
+          token.name = existingUser.name;
+          token.email = existingUser.email;
+        }
       }
       return token
     },
 
-    session({ session, token }: { session: any, token: any }) {
-      session.user = token.data;
+    async session({ session, token }: { session: any, token: any }) {
+      session.user.id = token.id;
+      session.user.name = token.name;
+      session.user.email = token.email;
       return session
     },
   },

@@ -51,7 +51,7 @@ model Order {
   tax            Float
   total          Float
   createdAt      DateTime       @default(now())
-  user           User           @relation(fields: [userId], references: [id])
+  user           User           @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId         String
   shippingMethod shippingMethod
   OrderItem      OrderItem[]
@@ -63,7 +63,7 @@ model OrderItem {
   quantity Int
   number String?
 
-  order   Order  @relation(fields: [orderId], references: [id])
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
   orderId String
 
   product   Product @relation(fields: [productId], references: [id])
@@ -81,6 +81,6 @@ model OrderAddress {
   phone      String
   country    String? @default("US")
 
-  order   Order  @relation(fields: [orderId], references: [id])
+  order   Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
   orderId String
 }
